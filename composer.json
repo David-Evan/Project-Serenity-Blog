@@ -1,0 +1,17 @@
+{
+    "name": "devan/serenity",
+    "type": "project",
+    "authors": [
+        {
+            "name": "David-Evan",
+            "email": "devan.exa@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Library\\":"lib/",
+            "Models\\":"models/"
+        }
+    }
+}
