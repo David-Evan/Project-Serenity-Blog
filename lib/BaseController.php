@@ -3,29 +3,19 @@ namespace Library;
 
 class BaseController{
     
-    const viewFolder = '../../view/';
-    const cacheFolder = '../../view/cache';
+    const VIEW_FOLDER = '../../view/';
+    const CACHE_FOLDER = '../../view/cache';
 
-    protected $environnement;
     protected $twig;
 
     public function __construct(){
 
         // Twig Initialization
-        $loader = new \Twig_Loader_Filesystem(self::viewFolder);
+        $loader = new \Twig_Loader_Filesystem(self::VIEW_FOLDER);
         $this->twig = new \Twig_Environment($loader, array(
             'cache' => false,
             'debug' => true
         ));
 
     }
-
-
-    /**
-     * Getter - Setter
-     */
-    public function getEnvironnement(){
-        return $this->environnement;
-    }
-
 }

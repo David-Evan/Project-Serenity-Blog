@@ -6,11 +6,11 @@ use Library\BaseController;
 
 class BlogController extends BaseController{
 
-    const Environnement = 'frontend';
+    const ENVIRONNEMENT = 'frontend';
 
     public function indexAction(){
         
-        return $this->twig->render(self::Environnement.'/index.html');
+        return $this->twig->render(self::ENVIRONNEMENT.'/index.html');
     }
 
     public function viewArticleAction($id){
