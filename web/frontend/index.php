@@ -1,11 +1,12 @@
 <?php
 require ('../../vendor/autoload.php');
-use Library\FrontendApplication;
+use Controller\{
+    BlogController};
+    
 
-$app = new FrontendApplication();
+if(!isset($_GET['controller'])){
 
-if(!isset($_GET['c'])){
-
-    require('../../views/'.$app->getEnvironnement().'/index.tpl.php');
+    $ctrl = new BlogController();
+    $ctrl->indexAction();
 
 }

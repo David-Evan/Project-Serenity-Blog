@@ -11,7 +11,8 @@
     "autoload": {
         "psr-4": {
             "Library\\":"lib/",
-            "Models\\":"models/"
+            "Model\\":"model/",
+            "Controller\\":"controller/"
         }
     }
 }
