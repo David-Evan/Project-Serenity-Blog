@@ -1,0 +1,12 @@
+.pagination{
+    justify-content: center;
+}
+
+.pagination .page-link{
+    color: $global_prim-color;
+}
+
+.pagination .page-item.active .page-link{
+    background-color: $global_prim-color;
+    border-color:  $global_prim-color;
+}

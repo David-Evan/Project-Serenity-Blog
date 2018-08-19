@@ -1,0 +1,41 @@
+
+// ----------------- //
+//      GLOBAL:      //
+// ------------------//
+
+
+// ----- FONTS ----- //
+$global_font-family: Karla, sans-serif;
+$global_font-size: 1.2em;
+$global_letter-spacing : 1px;
+
+// ----- COLORS ----- //
+$global_border_color: #ddd;
+
+// BACKGROUND COLORS
+$global_background-color: #fff;
+
+// TEXT COLORS
+$global_prim-color : #3a3a3a;
+$global_md-text-color:#939393;
+$global_light-text-color: #8f9aa7;
+
+$global_text-color : #3a3a3a;
+$global_h-color : $global_prim-color;
+$main-menu_color : $global_prim-color;
+
+// BUTTONS COLORS etc...
+
+$global_a_color: $global_prim-color;
+$global_a_color-hover: #000;
+
+$img_shadow-color: rgba(0,0,0,0.07);
+
+// ----------------- //
+//      OTHERS       //
+// ------------------//
+
+
+
+$cookies-alert_bg-color:  #5a5a5a;
+$cookies-alert_text-color:  #000;

@@ -1,0 +1,30 @@
+.mc_post_comment-avatar,
+.mc_post_comment-footer{
+  text-align: center;
+}
+
+.mc_post_comment-footer hr{
+  display: none;
+}
+
+.mc_post_comment-avatar img{
+  border: solid 1px #eee;
+  box-shadow: 7px 3px 12px $img_shadow-color;
+}
+
+.mc_post_comment-author{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.mc_post_comment-content{
+  text-align: justify;
+}
+
+/** Success Icon **/
+.mc_post_comment-sucess-icon{
+    font-size: 4.5rem;
+    padding-bottom: 20px;
+    color: $global_md-text-color;
+}

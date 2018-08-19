@@ -1,0 +1,51 @@
+.mc_post-date,
+.mc_post-title,
+.mc_post-picture,
+.mc_post-footer{
+  text-align: center;
+}
+
+.mc_post-content{
+  text-align: justify;
+}
+
+/* Add fadeout effect on prev container */
+.mc_post-content.prev::after
+{
+    content : '';
+    display: block;
+    height: 120px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: -120px;
+
+    background-image: linear-gradient(rgba(255,255,255,0.25), rgba(255,255,255,1));
+}
+
+/* Complet POST Content */
+
+.mc_post-content.complet{
+    text-indent : 1.5rem;
+    line-height: 1.9rem;
+
+    & p:not(:first-child){
+      margin-top: 35px;
+    }
+
+    & p:first-letter{
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+}
+
+.date{
+    font-size: 1rem;
+    color: $global_md-text-color;
+}
+
+.mc_post-picture img{
+  max-width: 100%;
+  box-shadow: 7px 3px 12px $img_shadow-color;
+}

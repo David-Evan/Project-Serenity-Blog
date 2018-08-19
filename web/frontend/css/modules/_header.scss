@@ -1,0 +1,23 @@
+.header-title h2{
+  font-size: 1rem;
+  color: $global_light-text-color;
+}
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand{
+  color: $main-menu_color;
+}
+
+.main-menu, .navbar-collapse{
+
+  background-color: $global_background-color;
+
+  border-bottom: solid 1px $global_border_color;
+
+  text-transform: uppercase;
+  letter-spacing: condensed;
+}
+
+.navbar-brand{
+    line-height: 40px;
+    font-size: 1.6rem;
+}

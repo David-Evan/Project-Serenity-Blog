@@ -1,0 +1,34 @@
+
+/* Send Newsletter button*/
+.btn.collapse-right{
+  border-radius: 0 5px 5px 0;
+  &:hover{
+    background-color: $global_prim-color;
+    color: #fff;
+  }
+}
+
+
+/* Discret buttons */
+.light-btn{
+  background-color: $global_background-color;
+  border: solid 2px $global_prim-color;
+  height: 40px;
+  width: 200px;
+  transition: 0.4s;
+  cursor: pointer;
+  &:hover{
+      color: $global_md-text-color;
+      border-color:$global_light-text-color;
+  }
+}
+
+.small-btn{
+  width: 115px;
+  font-size: 1rem;
+  height: 35px;
+}
+
+.large-btn{
+  width: 250px;
+}

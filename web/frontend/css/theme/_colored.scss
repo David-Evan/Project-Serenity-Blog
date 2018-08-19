@@ -1,0 +1,22 @@
+h1, h3, a,
+.pagination .page-item,
+.mc_post_comment-sucess-icon{
+    color:#00697A
+}
+
+a.alt-color{
+  color: #000;
+  &:hover{color: #00697A;}
+}
+
+.pagination .page-item.active .page-link{
+    background-color: #00697A;
+    border-color: #00697A;
+}
+
+.light-btn{
+  &:hover{
+      color: #00697A;
+      border-color:#00697A;
+  }
+}

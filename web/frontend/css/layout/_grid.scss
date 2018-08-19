@@ -1,0 +1,80 @@
+/*----------------------------*\
+    GRID : HEADER
+\*----------------------------*/
+
+.main-menu{
+  height: 60px;
+}
+
+.nav-item{
+    margin: 0 30px 0 30px;
+    height: 60px;
+    line-height: 40px;
+}
+
+.header-title{
+    margin-top: 110px;
+}
+
+/*----------------------------*\
+    GRID : CONTENT - POST
+\*----------------------------*/
+
+.content{
+    margin-top: 60px;
+}
+
+.mc_post-content-wrapper{
+    margin-top: 30px;
+}
+
+.mc_post:not(:first-child){
+    margin: 90px 0 70px 0;
+}
+
+.mc_post-content{
+    margin: 40px 0 35px 0;
+}
+
+.mc_post_publish-comment{
+    margin-top: 20px;
+}
+
+/*----------------------------*\
+    GRID : COMMENTS
+\*----------------------------*/
+
+.mc_post_comment{
+  margin-top: 25px;
+}
+
+.mc_post_comments-wrapper{
+  margin-top:40px;
+}
+
+.mc_post_comment-content{
+  margin-top: 15px;
+}
+/*----------------------------*\
+    GRID : SIDEBAR
+\*----------------------------*/
+
+.sidebar{
+    margin-top: -30px;
+}
+
+.sidebar-title{
+    margin : 50px 0 30px 0;
+}
+
+.sb-lp_post-title{
+    margin-top: 35px;
+}
+
+
+/*----------------------------*\
+    GRID : Footer
+\*----------------------------*/
+.footer-copyright{
+  padding: 20px;
+}

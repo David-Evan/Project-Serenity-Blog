@@ -1,0 +1,23 @@
+body{
+    color:#efefef;
+    background-color: #2c2c2c;
+}
+
+.header-title h2, .mc_post-date{
+   color: #ddd;
+}
+
+h1,h2, h3, h4, a{
+    color: #fff;
+}
+
+.pagination .page-item.active .page-link{
+    background-color: #a2a2a2;
+    border-color: #a2a2a2;
+}
+
+.mc_post-readmore{
+    border:none;
+}
+
+a:hover{color: #aaa}

@@ -1,0 +1,33 @@
+body{
+  font-family: $global_font-family;
+  font-size: $global_font-size;
+  background-color: $global_background-color;
+  color: $global_text-color;
+  letter-spacing: $global_letter-spacing;
+}
+
+a{
+  color : $global_a_color;
+  transition: 0.4s;
+
+  &:hover{
+    color: $global_a_color-hover;
+    text-decoration:none;
+  }
+}
+
+h1, h2, h3, h4{
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $global_h_color;
+}
+
+h1{font-size:3rem;}
+h2{font-size:2rem;}
+h3{font-size:1.4rem;}
+h4{font-size:1.1rem;}
+
+legend{
+  text-align: center;
+}

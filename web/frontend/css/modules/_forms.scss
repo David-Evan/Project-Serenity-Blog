@@ -1,0 +1,20 @@
+
+/*----------------------------*\
+    COMMONS COMPONENTS
+\*----------------------------*/
+
+
+
+/*----------------------------*\
+    ADD COMMENT FORM
+\*----------------------------*/
+.add-comment-form{
+  padding-top: 10px;
+    & .form-group{
+        margin-top: 30px;
+    }
+
+    & textarea{
+        min-height: 140px;
+    }
+}
