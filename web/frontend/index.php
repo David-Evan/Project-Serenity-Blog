@@ -7,6 +7,6 @@ use Controller\{
 if(!isset($_GET['controller'])){
 
     $ctrl = new BlogController();
-    $ctrl->indexAction();
 
+    echo $ctrl->indexAction();
 }

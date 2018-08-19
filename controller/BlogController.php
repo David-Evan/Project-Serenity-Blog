@@ -8,13 +8,15 @@ class BlogController extends BaseController{
 
     const Environnement = 'frontend';
 
-    public function __construct(){
-        $this->environnement = self::Environnement;
+    public function indexAction(){
+        
+        return $this->twig->render(self::Environnement.'/index.html');
     }
 
-    public function indexAction(){
+    public function viewArticleAction($id){
 
-        echo __DIR__;
+
+
     }
 
 }
