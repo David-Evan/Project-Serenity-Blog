@@ -17,5 +17,7 @@ class BaseController{
             'debug' => true
         ));
 
+        $this->twig->addExtension(new \Twig_Extension_Debug());
+
     }
 }

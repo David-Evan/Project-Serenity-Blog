@@ -3,68 +3,38 @@
 {% block title %}Un billet simple pour l'alaska - Jean FORTEROCHE{% endblock %}
 
 {% block content %}
-
 <main class="content-wrapper col-lg-8 mx-auto">
-    <!-- MAIN CONTENT : POST PREVIEW -->
+
+    {# Main loop to create Blog post preview list #}
+    {% for BlogPost in BlogPosts %}
+    <!-- Start - Blog post : Preview -->
     <article class="mc_post">
       <!-- Post preview - Header -->
       <header class="row justify-content">
         <div class="mc_post-date date col-12">
-          16/08/2018
+          {{BlogPost.publishDate|date('d/m/Y')}} 
         </div>
-        <h2 class="mc_post-title col-12">Lorem ipsum dolor sit.</h2>
+        <h2 class="mc_post-title col-12">{{BlogPost.title}}</h2>
       </header>
 
       <!-- Post preview - Content -->
       <div class="mc_post-content">
         <figure class="mc_post-picture">
-          <img src="https://dummyimage.com/500x340/ccc/000.png&text=Blog+post+illustration" alt="" >
+          <img src="{{BlogPost.pictureURL}}" alt="" >
         </figure>
 
         <div class="mc_post-content prev">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam ab at cupiditate ad nam labore voluptatum doloremque sapiente praesentium voluptates eveniet dolores pariatur numquam, porro. Magnam illo quibusdam sequi quidem adipisci, velit architecto laudantium culpa esse voluptatem ratione ad quis temporibus sint laborum, dolorem possimus officia maiores fugiat labore eius incidunt vitae numquam mollitia animi. Dolor id reiciendis doloremque rem ad eaque consequuntur ab pariatur.
+          {{BlogPost.content}}
         </div>
+      <!-- Post preview - Footer -->
         <footer class="mc_post-footer">
           <button class="mc_post-readmore light-btn">Afficher la suite</button>
         </footer>
       </div>
         <hr>
-      </article>
-
-    <!-- MAIN CONTENT : POST PREVIEW -->
-    <article class="mc_post">
-      <header>
-        <div class="mc_post-date date">
-          16/08/2018
-        </div>
-        <h2 class="mc_post-title">Optio possimus suscipit quas!</h2>
-      </header>
-      <div class="mc_post-content-wrapper">
-        <figure class="mc_post-picture"><img src="https://dummyimage.com/500x340/ccc/000.png&text=Blog+post+illustration" alt="" ></figure>
-        <div class="mc_post-content prev">
-          Facere harum, doloribus? Id perferendis cum culpa sunt, fugit ratione dolorum aliquam impedit. Amet illum nisi debitis eaque, est, autem! Dicta iste illo, veritatis! Quae consequuntur aliquid facilis, fugiat laborum! Nostrum nobis esse mollitia eveniet laborum ut facere laboriosam deleniti eos sed vitae quia veritatis voluptates similique dicta pariatur alias quis, amet rerum! Fuga fugiat iste, dignissimos, laborum ipsum voluptatibus qui consequatur quos iure vel.
-        </div>
-        <footer class="mc_post-footer"><button class="mc_post-readmore light-btn">Afficher la suite</button></footer>
-      </div>
-      <hr>
     </article>
-
-    <!-- MAIN CONTENT : POST PREVIEW -->
-    <article class="mc_post">
-      <header>
-        <div class="mc_post-date date">
-          16/08/2018
-        </div>
-        <h2 class="mc_post-title">Tenetur culpa laudantium officiis?</h2>
-      </header>
-      <div class="mc_post-content">
-        <figure class="mc_post-picture"><img src="https://dummyimage.com/500x340/ccc/000.png&text=Blog+post+illustration" alt="" ></figure>
-        <div class="mc_post-content prev">
-          Voluptatibus exercitationem quo commodi, quibusdam deserunt nam magni aspernatur suscipit repellat praesentium sequi vero, voluptas tenetur sunt ea saepe et eius debitis, enim beatae in error numquam. Fugiat ipsum, enim iure aperiam, nam officiis vitae. Fugiat nobis a quasi iste veritatis hic facere, nemo harum doloribus porro aut vitae, minima sequi est libero ut cumque maiores tempore necessitatibus neque nostrum sint omnis voluptatum. Atque, recusandae.
-        </div>
-        <footer class="mc_post-footer"><button class="mc_post-readmore light-btn">Afficher la suite</button></footer>
-      </div>
-    </article>
+    {% endfor %}
+  <!-- End - Blog post : Preview -->
 
     <nav aria-label="pagination">
       <ul class="pagination">

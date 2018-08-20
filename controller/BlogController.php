@@ -16,7 +16,7 @@ class BlogController extends BaseController{
 
         return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
 
-            'blogPosts' => $blogPostManager->getAllPosts(),
+            'BlogPosts' => $blogPostManager->getAllPosts(),
         ));
     }
 

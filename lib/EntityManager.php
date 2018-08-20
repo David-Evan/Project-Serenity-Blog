@@ -19,7 +19,10 @@ class EntityManager{
     public function __construct()
     {
         try{
-            $this->_db = new \PDO('mysql:dbname='.self::DATABASE.';host='.self::SQL_SERVER,self::SQL_USER ,self::SQL_PASSWORD);
+            $this->_db = new \PDO('mysql:dbname='.self::DATABASE.';host='.self::SQL_SERVER,
+            self::SQL_USER,
+            self::SQL_PASSWORD, 
+            array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         }
         catch(\PDOException $e){
             echo 'Une erreur est survenue :'.$e->getMessage();
