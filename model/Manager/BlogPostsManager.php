@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace Model\Manager;
 
 use Library\EntityManager;
 use Model\BlogPost;

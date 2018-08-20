@@ -583,9 +583,11 @@ legend {
 
 /* Discret buttons */
 .light-btn {
+    display: inline-block;
     background-color: #fff;
     border: solid 2px #3a3a3a;
     height: 40px;
+    line-height: 36px;
     width: 200px;
     transition: 0.4s;
     cursor: pointer;
@@ -742,6 +744,10 @@ h1, h3, a,
 .pagination .page-item,
 .mc_post_comment-sucess-icon {
     color: #00697A;
+}
+
+input:valid {
+    border-color: #17a2b8;
 }
 
 a.alt-color {

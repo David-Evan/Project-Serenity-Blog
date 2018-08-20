@@ -4,6 +4,10 @@ h1, h3, a,
     color:#00697A
 }
 
+input:valid{
+  border-color: #17a2b8;
+}
+
 a.alt-color{
   color: #000;
   &:hover{color: #00697A;}

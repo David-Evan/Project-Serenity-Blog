@@ -3,15 +3,14 @@
 namespace Controller;
 
 use Library\BaseController;
-use Model\BlogPostsManager;
-use Model\CommentsManager;
+use Model\Manager\{BlogPostsManager, CommentsManager};
 
 class BlogController extends BaseController{
 
     const ENVIRONNEMENT = 'frontend';
 
     /**
-     * {blog} + {id}
+     * {blog?} {id}
      * @return string - index view (list of last Posts)
      */
     public function indexAction(){
@@ -25,7 +24,7 @@ class BlogController extends BaseController{
     }
 
     /**
-     * {blog} + {id}
+     * {blog?} + {id}
      * @return string - Single Post view
      */
     public function viewBlogPostAction($id){
@@ -49,4 +48,11 @@ class BlogController extends BaseController{
 
     }
 
+    /**
+     * POST : {blog?} + $_POST 
+     */
+    public function publishCommentAction($post){
+
+        return '<pre>'.print_r($post).'</pre>';
+    }
 }

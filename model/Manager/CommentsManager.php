@@ -1,8 +1,9 @@
 <?php
 
-namespace Model;
+namespace Model\Manager;
 
 use Library\EntityManager;
+use Model\Entity\Comment;
 
 // Comment status : published | pending
 class CommentsManager extends EntityManager{
@@ -10,6 +11,7 @@ class CommentsManager extends EntityManager{
     const TABLE_NAME =  'comments';
 
     public function getAllCommentsForPostID($postID){
+
         $sql = 'SELECT * from '.self::TABLE_NAME.' where postID=:id';
         $query = $this->_db->prepare($sql);
 
@@ -34,4 +36,7 @@ class CommentsManager extends EntityManager{
             return false;
     }
 
+    public function createComment(Comment $comment){
+
+    }
 }

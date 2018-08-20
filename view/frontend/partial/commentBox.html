@@ -1,5 +1,5 @@
-<div id="addCommentForm" class="add-comment-form_wrapper">
-        <form class="add-comment-form form-horizontal">
+  <div id="addCommentFormWrapper" class="add-comment-form_wrapper">
+        <form method="POST" action="./?a=publishComment" id="addCommentForm" class="add-comment-form form-horizontal">
           <fieldset>
           <!-- Form Name -->
           <legend>Réagir à la publication</legend>
@@ -8,7 +8,7 @@
           <div class="form-group row justify-content-center">
             <label class="col-md-3 control-label" for="commentEmail">Your Email</label>
             <div class="col-md-7">
-            <input id="commentEmail" name="commentEmail" type="text" placeholder="Enter Email" class="form-control input-md" required="">
+            <input id="commentEmail" name="commentEmail" type="email" placeholder="Enter Email" class="form-control input-md" required>
             <small class="help-block">Your gravatar could be displayed. Never shared.</small>
             </div>
           </div>
@@ -17,7 +17,7 @@
           <div class="form-group row justify-content-center">
             <label class="col-md-3 control-label" for="commentName">Your Name</label>
             <div class="col-md-7">
-            <input id="commentName" name="commentName" type="text" placeholder="Enter Name" class="form-control input-md" required="">
+            <input id="commentName" name="commentName" type="text" placeholder="Enter Name" class="form-control input-md" required minlength="3" maxlength="35">
             <small class="help-block">Your name will be visible by anyone.</small>
             </div>
           </div>
@@ -26,7 +26,8 @@
           <div class="form-group row justify-content-center">
             <label class="col-md-3 control-label" for="commentMessage">Votre réaction</label>
             <div class="col-md-7">
-              <textarea class="form-control" id="commentMessage" name="commentMessage">It was amazing ...</textarea>
+              <textarea class="form-control" id="commentMessage" name="commentMessage" maxlength="1500" placeholder="It was amazing ..." required></textarea>
+              <small class="help-block">1 500 characters max.</small>
             </div>
           </div>
 

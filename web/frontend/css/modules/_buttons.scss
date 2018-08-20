@@ -11,9 +11,11 @@
 
 /* Discret buttons */
 .light-btn{
+  display: inline-block;
   background-color: $global_background-color;
   border: solid 2px $global_prim-color;
   height: 40px;
+  line-height: 36px;
   width: 200px;
   transition: 0.4s;
   cursor: pointer;

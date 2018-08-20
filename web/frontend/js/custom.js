@@ -1,8 +1,9 @@
 
 $('#showCommentFormBtn, #cancelCommentBtn').on('click', ()=>{
-    $('#addCommentForm').slideToggle();
+    $('#addCommentFormWrapper').slideToggle();
 })
 
 $('#sendCommentBtn').on('click', ()=>{
-  $('#successCommentSendModal').modal('toggle');
+  if($("#addCommentForm").valid())
+    $('#successCommentSendModal').modal('toggle');
 })
