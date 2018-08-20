@@ -24,7 +24,7 @@ class BaseController{
         $this->twig->addFilter($filter);
 
     }
-
+    
     public function redirect404(){
 
         return $this->twig->render('404.html');
