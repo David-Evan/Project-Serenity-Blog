@@ -15,16 +15,23 @@ if(empty($_GET['c']) or $_GET['c']== 'blog'){
     switch($_GET['a']){
 
         case 'viewBlogPost':
-
             if(isset($_GET['id']) && is_numeric($_GET['id']))
                 echo $ctrl->viewBlogPostAction($_GET['id']);
         break;
-
+        
+        /********************/
         case 'publishComment':
             if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST))
                 echo $ctrl->publishCommentAction($_POST);
         break;
 
+        /********************/
+        case 'getCommentsForPost':
+            if(isset($_GET['id']) && is_numeric($_GET['id']))
+                echo $ctrl->getCommentsForPostAction($_GET['id']);
+        break;
+
+        /********************/
         default: 
             echo $ctrl->indexAction();
     }

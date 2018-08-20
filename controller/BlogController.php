@@ -69,4 +69,18 @@ class BlogController extends BaseController{
         else
             return self::AJAX_FAIL_RETURN;
     }
+
+    /**
+     * Ajax GET : {id}
+     * Return only comments (need to be insert in template)
+     */
+    public function getCommentsForPostAction($id){
+
+        $commentManager = new CommentsManager;
+        $postComments = $commentManager->getAllCommentsForPostID($id);
+
+        return $this->twig->render(self::ENVIRONNEMENT.'/partial/commentsList.html', array(
+            'Comments' => $postComments,
+        ));
+    }
 }

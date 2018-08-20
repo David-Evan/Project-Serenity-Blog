@@ -38,11 +38,13 @@
           <!-- [END SECTION] - POST -->
 
           <!-- [START SECTION] - COMMENT BOX -->
-          {{ include('frontend/partial/commentBox.html') }}
+            {{ include('frontend/partial/commentBox.html') }}
           <!--[END SECTION] - COMMENT BOX-->
 
           <!-- [START SECTION] - COMMENTS -->
-          {{ include('frontend/partial/commentsList.html') }}
+          <div id="postCommentsWrapper" class="mc_post_comments-wrapper">
+            {{ include('frontend/partial/commentsList.html') }}
+          </div>
           <!-- [END SECTION] - COMMENTS-->
       </main>
 {% endblock %}

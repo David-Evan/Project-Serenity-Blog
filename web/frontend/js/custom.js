@@ -3,7 +3,7 @@
 $(document).ready(()=>{
         
     /**
-     * Comment form toggle
+     * Toggle Comment form when click button
      */
     $('#showCommentFormBtn, #cancelCommentBtn').on('click', ()=>{
         $('#addCommentFormWrapper').slideToggle();
@@ -11,15 +11,8 @@ $(document).ready(()=>{
 
 
     /**
-     * Comment form submit
+     * AJAX Query to publish a new comment
      */
-    /*
-    $('#sendCommentBtn').on('click', ()=>{
-    if($("#addCommentForm").valid())
-        $('#successCommentSendModal').modal('toggle');
-    })
-    */
-
     $this = $( "#addCommentForm" ).submit(event=>{
         if($($this)[0].checkValidity())
         {
@@ -33,13 +26,25 @@ $(document).ready(()=>{
             .done(data=>{
                 if(data == 'SUCCESS')
                     $('#successCommentSendModal').modal('toggle');
-                else
+                else{
                     $('#failCommentSendModal').modal('toggle');
+                    return;
+                }
+                
+                // Wrap comment form
+                $('#addCommentFormWrapper').slideToggle();
+
+                // Reload comments
+                $.get('./?a=getCommentsForPost&id=' + $('#inputPostID').val())
+                .done(data=>{
+                    $('#postCommentsWrapper').html(data);
+                })
+
             })
             .fail(()=>{
                 $('#failCommentSendModal').modal('toggle');
             })
         }
     });
-    
+
 })

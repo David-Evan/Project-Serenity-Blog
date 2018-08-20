@@ -2,7 +2,7 @@
     
     {% if Comments %}
         {% for Comment in Comments %}
-        <div class="mc_post_comments-wrapper">
+        
             <div class="mc_post_comment row">
               <header class="mc_post_comment-avatar col-sm-2 col-lg-2">
                 <img src="{{Comment.authorEmail|gravatar}}" width="90" height="90" alt="Avatar de {{Comment.authorName}}">
@@ -20,6 +20,6 @@
                 <hr>
               </footer>
             </div>
-          </div>
+          
         {% endfor %}
     {% endif %}
