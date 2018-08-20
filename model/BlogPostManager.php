@@ -13,6 +13,10 @@ class BlogPostManager extends EntityManager{
         return $this->_db->query('SELECT * from '.$this->_tableName, \PDO::FETCH_ASSOC)->fetchAll();
     }
 
+    public function getAllPublishedPost(){
+        return $this->_db->query('SELECT * from '.$this->_tableName.' where status="published"', \PDO::FETCH_ASSOC)->fetchAll();
+    }
+
     public function getPostByID($id){
 
     }

@@ -17,7 +17,11 @@ class BaseController{
             'debug' => true
         ));
 
+        // Bebug only, need to be remove in prod verv.
         $this->twig->addExtension(new \Twig_Extension_Debug());
+
+        $filter = new \Twig_Filter('excerpt', 'Library\Tool::getExcerpt');
+        $this->twig->addFilter($filter);
 
     }
 }

@@ -20,11 +20,11 @@
       <!-- Post preview - Content -->
       <div class="mc_post-content">
         <figure class="mc_post-picture">
-          <img src="{{BlogPost.pictureURL}}" alt="" >
+          <img src="{{BlogPost.pictureURL}}" alt="Blog article illustration" >
         </figure>
 
         <div class="mc_post-content prev">
-          {{BlogPost.content}}
+          {{BlogPost.content|excerpt}}
         </div>
       <!-- Post preview - Footer -->
         <footer class="mc_post-footer">
