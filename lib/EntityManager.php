@@ -4,7 +4,7 @@ namespace Library;
 
 use Library\Database;
 
-class ModelManager{
+class EntityManager{
 
     /**
      * Database 
