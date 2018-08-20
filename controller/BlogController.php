@@ -14,16 +14,24 @@ class BlogController extends BaseController{
 
         $blogPostManager = new BlogPostManager();
 
+        return $this->redirect404();
         return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
 
-            'BlogPosts' => $blogPostManager->getAllPosts(),
+            'BlogPosts' => $blogPostManager->getAllPublishedPost(),
         ));
     }
 
-    public function viewArticleAction($id){
+    public function viewBlogPostAction($id){
 
+        $blogPostManager = new BlogPostManager();
 
+        $blogPost = $blogPostManager->getPostByID($id);
+        
+        return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
 
+            'BlogPost' => $blogPost,
+        ));
+        
     }
 
 }
