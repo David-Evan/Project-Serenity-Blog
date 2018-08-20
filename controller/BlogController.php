@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Library\BaseController;
+use Model\BlogPostManager;
 
 class BlogController extends BaseController{
 
@@ -10,7 +11,13 @@ class BlogController extends BaseController{
 
     public function indexAction(){
         
-        return $this->twig->render(self::ENVIRONNEMENT.'/index.html');
+
+        $blogPostManager = new BlogPostManager();
+
+        return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
+
+            'blogPosts' => $blogPostManager->getAllPosts(),
+        ));
     }
 
     public function viewArticleAction($id){
