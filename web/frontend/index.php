@@ -3,7 +3,7 @@ require ('../../vendor/autoload.php');
 use Controller\{
     BlogController};
     
-if($_GET['controller'] == 'blog'){
+if(isset($_GET['controller']) && $_GET['controller']== 'blog'){
 
     $ctrl = new BlogController();
 
