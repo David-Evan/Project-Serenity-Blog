@@ -4,6 +4,7 @@ namespace Controller;
 
 use Library\BaseController;
 use Model\Manager\{BlogPostsManager, CommentsManager};
+use Model\Entity\{BlogPost, Comment};
 
 class BlogController extends BaseController{
 
@@ -49,10 +50,23 @@ class BlogController extends BaseController{
     }
 
     /**
-     * POST : {blog?} + $_POST 
+     * Ajax POST : {blog?} + $_POST 
      */
     public function publishCommentAction($post){
 
-        return '<pre>'.print_r($post).'</pre>';
+        $comment = new Comment;
+
+        $comment->setPostID($post['postID']);
+        $comment->setAuthorEmail($post['authorEmail']);
+        $comment->setAuthorName($post['authorName']);
+        $comment->setContent($post['commentContent']);
+        $comment->setStatus(Comment::DEFAULT_STATUS);
+        
+        $commentManager = new CommentsManager;
+
+        if($commentManager->createComment($comment))
+            return self::AJAX_SUCCESS_RETURN;
+        else
+            return self::AJAX_FAIL_RETURN;
     }
 }

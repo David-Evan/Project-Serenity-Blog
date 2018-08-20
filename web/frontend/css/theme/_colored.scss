@@ -4,7 +4,7 @@ h1, h3, a,
     color:#00697A
 }
 
-input:valid{
+input:not([type="submit"]):valid{
   border-color: #17a2b8;
 }
 

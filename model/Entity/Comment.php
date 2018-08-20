@@ -6,6 +6,12 @@ use Library\Entity;
 
 class Comment extends Entity{
 
+	const CONTENT_MIN_SIZE = 5;
+	const CONTENT_MAX_SIZE = 1500;
+	const AUTHOR_NAME_MIN_SIZE = 3;
+
+	const DEFAULT_STATUS = 'published';
+
     /**
      * authorName
      * @var string
@@ -56,6 +62,27 @@ class Comment extends Entity{
      */
     protected $surveyCount;
 
+
+	/**
+	 * Check properties before add or update
+	 */
+	public function isValidEntity(){
+
+		if(!filter_var($this->postID, FILTER_VALIDATE_INT))
+			return false;
+			
+		if(!filter_var($this->authorEmail, FILTER_VALIDATE_EMAIL))
+			return false;
+
+		if(strlen($this->authorName) < self::AUTHOR_NAME_MIN_SIZE)
+			return false;
+
+		if(strlen($this->content) < self::CONTENT_MIN_SIZE && strlen($this) > self::CONTENT_MAX_SIZE)
+			return false;
+
+		return true;
+
+	}
 
     /** Getter/Setter **/
     public function getPostID(){

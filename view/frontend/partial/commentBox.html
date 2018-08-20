@@ -6,27 +6,27 @@
 
           <!-- Text input-->
           <div class="form-group row justify-content-center">
-            <label class="col-md-3 control-label" for="commentEmail">Your Email</label>
+            <label class="col-md-3 control-label" for="authorEmail">Your Email</label>
             <div class="col-md-7">
-            <input id="commentEmail" name="commentEmail" type="email" placeholder="Enter Email" class="form-control input-md" required>
+            <input id="authorEmail" name="authorEmail" type="email" placeholder="Enter Email" class="form-control input-md" required>
             <small class="help-block">Your gravatar could be displayed. Never shared.</small>
             </div>
           </div>
 
           <!-- Text input-->
           <div class="form-group row justify-content-center">
-            <label class="col-md-3 control-label" for="commentName">Your Name</label>
+            <label class="col-md-3 control-label" for="authorName">Your Name</label>
             <div class="col-md-7">
-            <input id="commentName" name="commentName" type="text" placeholder="Enter Name" class="form-control input-md" required minlength="3" maxlength="35">
+            <input id="authorName" name="authorName" type="text" placeholder="Enter Name" class="form-control input-md" required minlength="3" maxlength="35">
             <small class="help-block">Your name will be visible by anyone.</small>
             </div>
           </div>
 
           <!-- Textarea -->
           <div class="form-group row justify-content-center">
-            <label class="col-md-3 control-label" for="commentMessage">Votre réaction</label>
+            <label class="col-md-3 control-label" for="commentContent">Votre réaction</label>
             <div class="col-md-7">
-              <textarea class="form-control" id="commentMessage" name="commentMessage" maxlength="1500" placeholder="It was amazing ..." required></textarea>
+              <textarea class="form-control" id="commentContent" name="commentContent" maxlength="1500" minlength="5" placeholder="It was amazing ..." required></textarea>
               <small class="help-block">1 500 characters max.</small>
             </div>
           </div>
@@ -40,10 +40,11 @@
           </div>
           <hr>
           </fieldset>
+            <input type="hidden" name="postID" value="{{BlogPost.id}}">
         </form>
       </div>
 
-
+      <!-- Success Modal Box -->
       <div id="successCommentSendModal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -60,11 +61,22 @@
         </div>
       </div>
     </div>
-      <!-- Sucess - Send comment box -->
-      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalSucessComment" aria-hidden="true">
-        <div class="modal-dialog modal">
-          <div class="modal-content">
-            Votre réaction a été envoyé.
+
+    
+    <!-- Fail Modal Box -->
+    <div id="failCommentSendModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Une erreur est survenue</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="mc_post_comment-fail-icon far fa-times-circle"></div>
+            <p>Votre réaction n'a pas été publiée</p>
           </div>
         </div>
       </div>
+    </div>

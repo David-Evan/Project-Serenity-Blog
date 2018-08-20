@@ -3,6 +3,9 @@ namespace Library;
 
 class BaseController{
     
+    const AJAX_SUCCESS_RETURN = 'SUCCESS';
+    const AJAX_FAIL_RETURN = 'FAIL';
+
     const VIEW_FOLDER = '../../view/';
     const CACHE_FOLDER = '../../view/cache';
 
@@ -20,9 +23,11 @@ class BaseController{
         // Bebug only, need to be remove in prod verv.
         $this->twig->addExtension(new \Twig_Extension_Debug());
 
-        $filter = new \Twig_Filter('excerpt', 'Library\Tool::getExcerpt');
-        $this->twig->addFilter($filter);
-
+        $excerptFilter = new \Twig_Filter('excerpt', 'Library\Tool::getExcerpt');
+        $gravatarFilter = new  \Twig_Filter('gravatar', 'Library\Tool::getGravatar');
+        
+        $this->twig->addFilter($excerptFilter);
+        $this->twig->addFilter($gravatarFilter);
     }
     
     public function redirect404(){

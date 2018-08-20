@@ -23,8 +23,12 @@
 }
 
 /** Success Icon **/
-.mc_post_comment-sucess-icon{
+.mc_post_comment-sucess-icon, .mc_post_comment-fail-icon{
     font-size: 4.5rem;
     padding-bottom: 20px;
     color: $global_md-text-color;
+}
+
+.mc_post_comment-fail-icon{
+    color: $global_error_color; 
 }

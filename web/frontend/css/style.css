@@ -646,10 +646,14 @@ legend {
 }
 
 /** Success Icon **/
-.mc_post_comment-sucess-icon {
+.mc_post_comment-sucess-icon, .mc_post_comment-fail-icon {
     font-size: 4.5rem;
     padding-bottom: 20px;
     color: #939393;
+}
+
+.mc_post_comment-fail-icon {
+    color: #d9382e;
 }
 
 .footer-copyright {
@@ -746,7 +750,7 @@ h1, h3, a,
     color: #00697A;
 }
 
-input:valid {
+input:not([type="submit"]):valid {
     border-color: #17a2b8;
 }
 
