@@ -28,13 +28,13 @@ if(empty($_GET['c']) or $_GET['c']== 'blog'){
 
         /********************/
         case 'getCommentsForPost':
-            if(isset($_GET['id']) && is_numeric($_GET['id']))
+            if(isset($_GET['id']) && is_int($_GET['id']))
                 echo $ctrl->getCommentsForPostAction($_GET['id']);
         break;
 
         /********************/
         default: 
-            if(isset($_GET['p']) && is_numeric($_GET['p']))
+            if(isset($_GET['p']) && is_int($_GET['p']))
                 echo $ctrl->indexAction($_GET['p']);
             else
                 echo $ctrl->indexAction();

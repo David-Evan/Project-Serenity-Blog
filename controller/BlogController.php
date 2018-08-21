@@ -9,18 +9,25 @@ use Model\Entity\{BlogPost, Comment};
 class BlogController extends BaseController{
 
     const ENVIRONNEMENT = 'frontend';
+    
+    const BLOGPOST_PER_PAGE = '1';
 
     /**
-     * {blog?} {id}
+     * {blog?} {page?}
      * @return string - index view (list of last Posts)
      */
-    public function indexAction(){
+    public function indexAction($page = 1){
         
         $blogPostManager = new BlogPostsManager;
 
+        $blogPosts = $blogPostManager->getAllPublishedPosts();
+
+        
+
+
         return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
 
-            'BlogPosts' => $blogPostManager->getAllPublishedPosts(),
+            'BlogPosts' => $blogPosts,
         ));
     }
 
