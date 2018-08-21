@@ -6,6 +6,7 @@ use Controller\{
     /**
      * $_GET['c'] = controller
      * $_GET['a'] = action
+     * $_GET['p'] = page
      */
 
 if(empty($_GET['c']) or $_GET['c']== 'blog'){
@@ -33,7 +34,10 @@ if(empty($_GET['c']) or $_GET['c']== 'blog'){
 
         /********************/
         default: 
-            echo $ctrl->indexAction();
+            if(isset($_GET['p']) && is_numeric($_GET['p']))
+                echo $ctrl->indexAction($_GET['p']);
+            else
+                echo $ctrl->indexAction();
     }
 }
 else{

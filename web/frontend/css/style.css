@@ -384,6 +384,12 @@ legend {
     text-align: center;
 }
 
+.inherit {
+    color: inherit;
+    background-color: inherit;
+    text-transform: inherit;
+}
+
 /*----------------------------*\
     LAYOUT
 \*----------------------------*/
@@ -508,7 +514,7 @@ legend {
     left: 0;
     right: 0;
     margin-top: -120px;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.25), white);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.9));
 }
 
 /* Complet POST Content */

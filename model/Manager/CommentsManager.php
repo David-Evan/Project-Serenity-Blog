@@ -10,9 +10,12 @@ class CommentsManager extends EntityManager{
 
     const TABLE_NAME =  'comments';
 
-    public function getAllCommentsForPostID($postID){
+    public function getAllCommentsForPostID($postID, $orderByPublishDate = 'DESC'){
 
-        $sql = 'SELECT * from '.self::TABLE_NAME.' where postID=:id';
+        $sql =  ' SELECT * FROM '.self::TABLE_NAME.
+                ' WHERE postID=:id'.
+                ' ORDER BY publishDate '.$orderByPublishDate;
+
         $query = $this->_db->prepare($sql);
 
         $query->execute(array(':id' => $postID));
@@ -25,7 +28,9 @@ class CommentsManager extends EntityManager{
     }
 
     public function deleteCommentByID($id){
-        $sql = 'DELETE from '.$this->_tableName.' where id=:id';
+        $sql =  ' DELETE FROM '.$this->_tableName.
+                ' WHERE id=:id';
+
         $query = $this->_db->prepare($sql);
 
         $query->execute(array(':id' => $id));
@@ -41,9 +46,9 @@ class CommentsManager extends EntityManager{
         if(!$comment->isValidEntity())
             return false;
 
-        $sql = 'INSERT INTO '.self::TABLE_NAME.' 
-                        (postID, authorEmail, authorName, content, status) 
-                VALUES (:postID, :authorEmail, :authorName, :content, :status)';
+        $sql =  ' INSERT INTO '.self::TABLE_NAME.
+                ' (postID, authorEmail, authorName, content, status)'.
+                ' VALUES (:postID, :authorEmail, :authorName, :content, :status)';
 
         $query = $this->_db->prepare($sql);
 

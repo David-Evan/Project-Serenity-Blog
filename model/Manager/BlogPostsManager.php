@@ -15,18 +15,21 @@ class BlogPostsManager extends EntityManager{
     const TABLE_NAME =  'blog_posts';
 
 
-    public function getAllPosts(){
+    public function getAllPosts($orderByPublishDate = 'DESC') {
         
-        $result = $this->_db->query('SELECT * from '.self::TABLE_NAME, \PDO::FETCH_OBJ)->fetchAll();
+        $result = $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+                                    ' ORDER BY publishDate '.$orderByPublishDate, \PDO::FETCH_OBJ)->fetchAll();
 
         if(empty($result))
             return false;
         return $result;
     }
 
-    public function getAllPublishedPosts(){
+    public function getAllPublishedPosts($orderByPublishDate = 'DESC'){
 
-        $result = $this->_db->query('SELECT * from '.self::TABLE_NAME.' where status="published"', \PDO::FETCH_OBJ)->fetchAll();
+        $result = $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+                                    ' WHERE status="published"'.
+                                    ' ORDER BY publishDate '.$orderByPublishDate, \PDO::FETCH_OBJ)->fetchAll();
 
         if(empty($result))
             return false;
@@ -35,7 +38,9 @@ class BlogPostsManager extends EntityManager{
 
     public function getAllDraftPosts(){
 
-        $result = $this->_db->query('SELECT * from '.self::TABLE_NAME.' where status="draft"', \PDO::FETCH_OBJ)->fetchAll();
+        $result = $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+                                    ' WHERE status="draft"', 
+                                    \PDO::FETCH_OBJ)->fetchAll();
 
         if(empty($result))
             return false;
@@ -44,7 +49,9 @@ class BlogPostsManager extends EntityManager{
 
     public function getPostByID($id){
 
-        $sql = 'SELECT * from '.self::TABLE_NAME.' where id=:id';
+        $sql = 'SELECT * FROM '.self::TABLE_NAME.
+               ' WHERE id=:id';
+
         $query = $this->_db->prepare($sql);
 
         $query->execute(array(':id' => $id));
@@ -61,7 +68,9 @@ class BlogPostsManager extends EntityManager{
     }
 
     public function deletePostByID($id){
-        $sql = 'DELETE from '.self::TABLE_NAME.' where id=:id';
+        $sql = ' DELETE FROM '.self::TABLE_NAME.
+               ' WHERE id=:id';
+
         $query = $this->_db->prepare($sql);
 
         $query->execute(array(':id' => $id));
