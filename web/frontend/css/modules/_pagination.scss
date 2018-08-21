@@ -10,3 +10,15 @@
     background-color: $global_prim-color;
     border-color:  $global_prim-color;
 }
+
+.pagination .page-item .page-link{
+    width: 35px;
+    height: 40px;
+    padding: 0;
+    line-height: 40px;
+    text-align: center;
+}
+
+.page-link i{
+    line-height: 40px;
+}

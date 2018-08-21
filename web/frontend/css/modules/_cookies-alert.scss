@@ -2,16 +2,26 @@
     position: fixed;
     bottom: 0; left: 0;
     width: 100%;
-
-    background-color: $cookies-alert_bg-color;
-
-    color:white;
-
     padding: 15px;
 
+    background-color: rgba(80,80,80,0.9);
+
+    color:white;
+    font-size: 1rem;
+    
     display: none;
+
+    z-index: 10;
 }
 
+.cookies-alert-title{
+  color : #fff;
+}
 .cookies-alert_links{
     color: $cookies-alert_text-color;
+}
+
+.cookies-btn{
+    text-align: center;
+    border-radius: 7px;
 }

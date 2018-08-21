@@ -561,14 +561,25 @@ legend {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #5a5a5a;
-    color: white;
     padding: 15px;
+    background-color: rgba(80, 80, 80, 0.9);
+    color: white;
+    font-size: 1rem;
     display: none;
+    z-index: 10;
+}
+
+.cookies-alert-title {
+    color: #fff;
 }
 
 .cookies-alert_links {
     color: #000;
+}
+
+.cookies-btn {
+    text-align: center;
+    border-radius: 7px;
 }
 
 /* Send Newsletter button*/
@@ -602,6 +613,7 @@ legend {
     width: 115px;
     font-size: 1rem;
     height: 35px;
+    line-height: 30px;
 }
 
 .large-btn {
@@ -619,6 +631,18 @@ legend {
 .pagination .page-item.active .page-link {
     background-color: #3a3a3a;
     border-color: #3a3a3a;
+}
+
+.pagination .page-item .page-link {
+    width: 35px;
+    height: 40px;
+    padding: 0;
+    line-height: 40px;
+    text-align: center;
+}
+
+.page-link i {
+    line-height: 40px;
 }
 
 .mc_post_comment-avatar,
