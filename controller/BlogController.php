@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Library\BaseController;
+use Library\{BaseController, Paginator};
 use Model\Manager\{BlogPostsManager, CommentsManager};
 use Model\Entity\{BlogPost, Comment};
 
@@ -22,12 +22,11 @@ class BlogController extends BaseController{
 
         $blogPosts = $blogPostManager->getAllPublishedPosts();
 
-        
-
+        $paginator = new Paginator($blogPosts, $page);
 
         return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
-
-            'BlogPosts' => $blogPosts,
+            'BlogPosts' => $paginator->getElementsForCurrentPage(),
+            'Paginator' => $paginator,
         ));
     }
 

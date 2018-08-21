@@ -2,17 +2,18 @@
 
  namespace Library;
 
- /**
+/**
   * @author David EVAN
   * @source http://github.com/David-Evan/paginator
   * @copyright LICENCE M.I.T
   * 
   * Paginator is a generic class used to easing pagination when you need full control of Data and/or UI.
   */
-class Paginator{
+
+  class Paginator{
 
     /**
-     * Data to paginate. (PDO:FETCH_OBJ / PDO:FETCH_ASSOC working well)
+     * Data to paginate. Any array (eg PDO:FETCH_OBJ / PDO:FETCH_ASSOC working well)
      * @var array
      */
     protected $elementToPaginate;
@@ -40,9 +41,22 @@ class Paginator{
 
     /**
      * Total page you have in your data array
+     * @var int
      */
     protected $totalPage;
 
+    /**
+     * Array of previous / next page in paginator. Could be used to display pagination component.
+     * 
+     * Eg 1 :  You have 10 pages. The paginator range is 2. The current page is 5.
+     * Result : array([3],[4],[5],[6],[7])
+     * Eg 2 :  You have 10 pages. The paginator range is 2. The current page is 1.
+     * Result: array([1][2][3])
+     * 
+     * @var array
+     */
+    protected $pageList = [];
+    
     /**
      * If the next page exist, return page number, else return false
      * You can use {::isCurrentPageLastOne} to have a true/false return.
@@ -77,12 +91,30 @@ class Paginator{
         $this->elementToPaginate = $elementToPaginate;
 
         // Maximum existing page
-        $this->totalPage = ceil(count($this->elementToPaginate)/$this->elementsPerPage);
+        $this->totalPage = intval(ceil(count($this->elementToPaginate)/$this->elementsPerPage));
 
         // True : False depending if exist a page before/after current, else prev/next page number;
         $this->nextPage = (($this->currentPage+1) >= $this->totalPage) ?false:$this->currentPage+1;
         $this->previousPage = (($this->currentPage-1) < 1) ?false:$this->currentPage-1;
 
+        // Get the page list from current page
+        $this->buildPageList();
+
+    }
+
+    /**
+     * Build the 'page list'. See doc of property. Internal use only.
+     * You can get the result with ::getPageList() method
+     * @return array
+     */
+    protected function buildPageList(){
+        for($i = $this->currentPage-$this->paginatorRange;
+            $i <= $this->currentPage+$this->paginatorRange;
+            $i++)
+            {
+                if($this->existPage($i))
+                    $this->pageList[] = $i;
+            }
     }
 
     /**
@@ -170,13 +202,12 @@ class Paginator{
         return false;
     }
 
-
     /**
      * Return true if current page is the first one
      * @return bool
      */
     public function isCurrentPageFirstOne(){
-        if($this->currentPage === 1)
+        if($this->currentPage == 1)
             return true;
         return false;
     }
@@ -212,6 +243,10 @@ class Paginator{
         return $this->totalPage;
       }
 
+      public function getPageList(){
+        return $this->pageList;
+      }
+
       public function getNextPage(){
         return $this->nextPage;
       }
@@ -233,7 +268,7 @@ class Paginator{
  * To perform it job, Paginator need a data array, :
  * ['A', 'B', 'C', 'D'] ...
  *
- * It could be a PDO:FETCH_OBJ / PDO:FETCH_ASSOC
+ * It could be any array, like PDO:FETCH_OBJ / PDO:FETCH_ASSOC or custom data
  *
  * Also, you can custom this parameters :
  *  - Current page = (default : 1)

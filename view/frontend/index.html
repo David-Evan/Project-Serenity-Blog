@@ -35,22 +35,8 @@
     </article>
     {% endfor %}
   <!-- End - Blog post : Preview -->
-
-    <nav aria-label="pagination">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-left"></i></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active">
-          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#"><i class="fa fa-chevron-right"></i></a>
-        </li>
-      </ul>
-    </nav>
+  <!-- Paginator -->
+    {% block paginator %} {{ include('frontend/partial/paginator.html') }}  {% endblock %}
     <hr>
 </main>
 

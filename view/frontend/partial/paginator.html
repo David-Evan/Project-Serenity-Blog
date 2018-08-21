@@ -1,0 +1,40 @@
+<nav aria-label="pagination">
+    <ul class="pagination">
+
+      {# if : is the current page the first one : don't create [<] #}
+      {% if not Paginator.isCurrentPageFirstOne %}
+      <li class="page-item">
+            <a class="page-link" href="#{{Paginator.previousPage}}" tabindex="-1">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+      </li>
+      {% endif %}
+
+      {# if : you have page under range capacity : create [...] #}
+      {% if not Paginator.canAllPageBeforeBeDisplayed %}<li class="page-item"><a class="page-link disabled-link">...</a></li>{% endif %}
+
+      {# for each page in pagelist : create a link. if page == currentPage, so, create different one #}
+      {% for page in Paginator.getPageList %}
+        {% if page == Paginator.getCurrentPage %}
+            <li class="page-item active">
+                <a class="page-link" href="#">{{page}}<span class="sr-only">(current)</span></a>
+            </li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="./{{page}}">{{page}}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {# if : you have page over range capacity : create [...] #}
+      {% if not Paginator.canAllPageAfterBeDisplayed %}<li class="page-item"><a class="page-link disabled-link">...</a></li>{% endif %}
+
+      {# if : is the current page the last one : don't create [>] #}
+      {% if not Paginator.isCurrentPageLastOne %}
+      <li class="page-item">
+            <a class="page-link" href="#{{Paginator.nextPage}}" tabindex="+1">
+                <i class="fa fa-chevron-right"></i>
+            </a>
+       </li>
+       {% endif %}
+
+    </ul>
+</nav>
