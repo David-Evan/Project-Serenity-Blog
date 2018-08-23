@@ -22,3 +22,16 @@
 .page-link i{
     line-height: 40px;
 }
+
+.page-item >.page-link.disabled-link,
+.page-link.disabled-link,
+.disabled-link{
+    cursor: default;
+    & i{
+        cursor: default;
+    }
+    &:hover{
+        cursor: default;
+        background-color: #fff;
+    }
+}

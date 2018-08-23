@@ -651,6 +651,25 @@ legend {
     line-height: 40px;
 }
 
+.page-item > .page-link.disabled-link,
+.page-link.disabled-link,
+.disabled-link {
+    cursor: default;
+}
+
+.page-item > .page-link.disabled-link i,
+.page-link.disabled-link i,
+.disabled-link i {
+    cursor: default;
+}
+
+.page-item > .page-link.disabled-link:hover,
+.page-link.disabled-link:hover,
+.disabled-link:hover {
+    cursor: default;
+    background-color: #fff;
+}
+
 .mc_post_comment-avatar,
 .mc_post_comment-footer {
     text-align: center;
