@@ -47,7 +47,7 @@ class BlogController extends BaseController{
         $commentManager = new CommentsManager;
         $postComments = $commentManager->getAllCommentsForPostID($id);
 
-        $paginator = new Paginator($postComments, 1, 1);
+        $paginator = new Paginator($postComments, 1, 10);
 
         return $this->twig->render(self::ENVIRONNEMENT.'/viewBlogPost.html', array(
             'BlogPost' => $blogPost,
