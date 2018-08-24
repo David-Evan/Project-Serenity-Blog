@@ -26,6 +26,7 @@ class BlogController extends BaseController{
 
         return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
             'BlogPosts' => $paginator->getElementsForCurrentPage(),
+            'Sidebar' => array('BlogPosts' => $paginator->getElementsForPage(1)),
             'Paginator' => $paginator,
         ));
     }
@@ -43,14 +44,15 @@ class BlogController extends BaseController{
         if(!$blogPost or $blogPost->status !== 'published')
             return $this->redirect404();
 
-
         $commentManager = new CommentsManager;
         $postComments = $commentManager->getAllCommentsForPostID($id);
 
+        $paginator = new Paginator($postComments, 1, 1);
 
         return $this->twig->render(self::ENVIRONNEMENT.'/viewBlogPost.html', array(
             'BlogPost' => $blogPost,
-            'Comments' => $postComments,
+            'Comments' => $paginator->getElementsForCurrentPage(),
+            'Paginator' => $paginator,
         ));
 
     }

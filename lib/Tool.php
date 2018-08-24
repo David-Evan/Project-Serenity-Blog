@@ -15,7 +15,7 @@ class Tool{
      * Register as Twig extension filter : {{text|excerpt}}
      * @return string 
      */
-    public static function getExcerpt($str, $startPos=0, $maxLength= self::EXCERPT_MAX_LENGHT) {
+    public static function getExcerpt($str, $maxLength= self::EXCERPT_MAX_LENGHT, $startPos=0) {
         if(strlen($str) > $maxLength) {
             $excerpt   = substr($str, $startPos, $maxLength-3);
             $lastSpace = strrpos($excerpt, ' ');

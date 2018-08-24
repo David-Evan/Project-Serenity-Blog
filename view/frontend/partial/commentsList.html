@@ -22,4 +22,5 @@
             </div>
           
         {% endfor %}
+        {% block paginator %} {{ include('frontend/partial/paginator.html') }}  {% endblock %}
     {% endif %}

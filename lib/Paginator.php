@@ -94,7 +94,7 @@
         $this->totalPage = intval(ceil(count($this->elementToPaginate)/$this->elementsPerPage));
 
         // True : False depending if exist a page before/after current, else prev/next page number;
-        $this->nextPage = (($this->currentPage+1) >= $this->totalPage) ?false:$this->currentPage+1;
+        $this->nextPage = (($this->currentPage+1) > $this->totalPage) ?false:$this->currentPage+1;
         $this->previousPage = (($this->currentPage-1) < 1) ?false:$this->currentPage-1;
 
         // Get the page list from current page

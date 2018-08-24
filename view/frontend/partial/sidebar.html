@@ -43,22 +43,12 @@
             <section class="sidebar_lastpost col-sm-9 col-md-7 col-lg-12 mx-auto">
               <h3 class="sidebar-title">Derniers billets</h3>
     
+              {% for Lastpost in Sidebar.BlogPosts %}
               <section class="sb-lp_post">
-                <h4 class="sb-lp_post-title">Post Title 1</h4>
-                <p class="sb-lp_post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil officia eaque, quidem quaerat sequi, quisquam eveniet.</p>
+                <h4 class="sb-lp_post-title"><a href="./?a=viewBlogPost&id={{Lastpost.id}}" class="alt-color">{{Lastpost.title}}</a></h4>
+                <p class="sb-lp_post-content">{{ Lastpost.content|excerpt(150)|raw }}</p>
               </section>
-              <section class="sb-lp_post">
-                <h4 class="sb-lp_post-title">Post Title 2</h4>
-                <p class="sb-lp_post-content">Esse iusto at molestias hic culpa ratione, minus reiciendis incidunt sunt explicabo, officiis modi recusandae velit!</p>
-              </section>
-              <section class="sb-lp_post">
-                <h4 class="sb-lp_post-title">Post Title 3</h4>
-                <p class="sb-lp_post-content">Nostrum doloribus ad aut ex saepe ipsam eaque enim illum dignissimos maxime quis porro hic, vel?</p>
-              </section>
-              <section class="sb-lp_post">
-                <h4 class="sb-lp_post-title">Post Title 4</h4>
-                <p class="sb-lp_post-content">Nobis, dignissimos architecto. Itaque cupiditate quae reprehenderit asperiores ullam! Facere, modi. Perspiciatis quisquam ut dicta quasi.</p>
-              </section>
+              {% endfor %}
     
             </section>
             </div>
