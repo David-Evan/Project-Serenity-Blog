@@ -2,7 +2,8 @@
 
 namespace Controller;
 
-use Library\{BaseController, Paginator};
+use Library\{BaseController};
+use Library\Paginator\ {Paginator, CommentsPaginatorOptions, BlogPostsPaginatorOptions};
 use Model\Manager\{BlogPostsManager, CommentsManager};
 use Model\Entity\{BlogPost, Comment};
 
@@ -22,7 +23,7 @@ class BlogController extends BaseController{
 
         $blogPosts = $blogPostManager->getAllPublishedPosts();
 
-        $paginator = new Paginator($blogPosts, $page);
+        $paginator = new Paginator($blogPosts, new BlogPostsPaginatorOptions($page));
 
         return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
             'BlogPosts' => $paginator->getElementsForCurrentPage(),
@@ -47,7 +48,7 @@ class BlogController extends BaseController{
         $commentManager = new CommentsManager;
         $postComments = $commentManager->getAllCommentsForPostID($id);
 
-        $paginator = new Paginator($postComments, 1, 10);
+        $paginator = new Paginator($postComments, new CommentsPaginatorOptions(1));
 
         return $this->twig->render(self::ENVIRONNEMENT.'/viewBlogPost.html', array(
             'BlogPost' => $blogPost,
