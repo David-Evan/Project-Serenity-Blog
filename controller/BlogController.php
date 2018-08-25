@@ -10,8 +10,6 @@ use Model\Entity\{BlogPost, Comment};
 class BlogController extends BaseController{
 
     const ENVIRONNEMENT = 'frontend';
-    
-    const BLOGPOST_PER_PAGE = '1';
 
     /**
      * {blog?} {page?}
@@ -36,8 +34,9 @@ class BlogController extends BaseController{
      * {blog?} + {id}
      * @return string - Single Post view
      */
-    public function viewBlogPostAction($id){
+    public function viewBlogPostAction($id, $commentsPage = 1){
 
+        // Get Blog Post
         $blogPostManager = new BlogPostsManager;
 
         $blogPost = $blogPostManager->getPostByID($id);
@@ -45,14 +44,18 @@ class BlogController extends BaseController{
         if(!$blogPost or $blogPost->status !== 'published')
             return $this->redirect404();
 
+        // Get comments
         $commentManager = new CommentsManager;
-        $postComments = $commentManager->getAllCommentsForPostID($id);
+        $commentForPost = $commentManager->getAllCommentsForPostID($id);
 
-        $paginator = new Paginator($postComments, new CommentsPaginatorOptions(1));
+        $paginator = new Paginator($commentForPost, new CommentsPaginatorOptions($commentsPage));
+        if(!$paginator->currentPageExist())
+            return $this->redirect404();
 
+        // Render view
         return $this->twig->render(self::ENVIRONNEMENT.'/viewBlogPost.html', array(
             'BlogPost' => $blogPost,
-            'Comments' => $paginator->getElementsForCurrentPage(),
+            'Comments' => $paginator->getElementsForPage($commentsPage),
             'Paginator' => $paginator,
         ));
 
@@ -86,10 +89,10 @@ class BlogController extends BaseController{
     public function getCommentsForPostAction($id){
 
         $commentManager = new CommentsManager;
-        $postComments = $commentManager->getAllCommentsForPostID($id);
+        $commentForPost = $commentManager->getAllCommentsForPostID($id);
 
         return $this->twig->render(self::ENVIRONNEMENT.'/partial/commentsList.html', array(
-            'Comments' => $postComments,
+            'Comments' => $commentForPost,
         ));
     }
 }

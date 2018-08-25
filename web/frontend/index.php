@@ -17,7 +17,12 @@ if(empty($_GET['c']) or $_GET['c']== 'blog'){
 
         case 'viewBlogPost':
             if(isset($_GET['id']) && is_numeric($_GET['id']))
-                echo $ctrl->viewBlogPostAction($_GET['id']);
+            {
+                if(isset($_GET['p']) && is_int($_GET['p']))
+                    echo $ctrl->viewBlogPostAction($_GET['id'], $_GET['p']);
+                else
+                    echo $ctrl->viewBlogPostAction($_GET['id']);
+            }
         break;
         
         /********************/
