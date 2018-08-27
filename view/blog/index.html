@@ -1,4 +1,6 @@
-{% extends "frontend/base.html" %}
+{% extends "layout/base.html" %}
+
+{% block main_menu %}{{ include('blog/partial/main-menu.html') }}{% endblock %}
 
 {% block title %}Un billet simple pour l'alaska - Jean FORTEROCHE{% endblock %}
 
@@ -36,10 +38,10 @@
     {% endfor %}
   <!-- End - Blog post : Preview -->
   <!-- Paginator -->
-    {% block paginator %} {{ include('frontend/partial/paginator.html') }}  {% endblock %}
+    {% block paginator %} {{ include('layout/partial/paginator.html') }}  {% endblock %}
     <hr>
 </main>
 
 {% endblock %}
 
-{% block sidebar %} {{ include('frontend/partial/sidebar.html') }} {% endblock %}
+{% block sidebar %} {{ include('blog/partial/sidebar.html') }} {% endblock %}

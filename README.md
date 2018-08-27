@@ -22,8 +22,9 @@ Le projet utilise une architecture MVC Classique :
 ./lib/
 ./models/
 ./views/
-  ./frontend/
-  ./backend/
+  ./blog/
+  ./admin/
+  ./layout/
 ./controllers/
 .web/
   ./frontend/
@@ -35,7 +36,7 @@ Voici leurs descriptions :
 
 - **lib/** : Contient les classes utilisées pour faire fonctionner le projet
 - **models/** : Les models / Managers de l'application
-- **views/** : Templates de l'application
+- **views/** : Templates de l'application - *layout = dossier communs aux différents controllers
 - **controllers/** : Contient les controllers de l'application
 - **web/** : Dossier accessible au public contenant le point d'entrée de l'application
 - **vendors/** : Contient les bibliothèques PHP externes dont nous pourrions avoir besoin

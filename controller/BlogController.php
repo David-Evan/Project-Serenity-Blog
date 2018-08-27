@@ -9,7 +9,7 @@ use Model\Entity\{BlogPost, Comment};
 
 class BlogController extends BaseController{
 
-    const ENVIRONNEMENT = 'frontend';
+    const CONTROLLER_NAME = 'Blog';
 
     /**
      * {blog?} {page?}
@@ -23,7 +23,7 @@ class BlogController extends BaseController{
 
         $paginator = new Paginator($blogPosts, new BlogPostsPaginatorOptions($page));
 
-        return $this->twig->render(self::ENVIRONNEMENT.'/index.html', array(
+        return $this->twig->render(self::CONTROLLER_NAME.'/index.html', array(
             'BlogPosts' => $paginator->getElementsForCurrentPage(),
             'Sidebar' => array('BlogPosts' => $paginator->getElementsForPage(1)),
             'Paginator' => $paginator,
@@ -53,7 +53,7 @@ class BlogController extends BaseController{
             return $this->redirect404();
 
         // Render view
-        return $this->twig->render(self::ENVIRONNEMENT.'/viewBlogPost.html', array(
+        return $this->twig->render(self::CONTROLLER_NAME.'/viewBlogPost.html', array(
             'BlogPost' => $blogPost,
             'Comments' => $paginator->getElementsForPage($commentsPage),
             'Paginator' => $paginator,
@@ -91,7 +91,7 @@ class BlogController extends BaseController{
         $commentManager = new CommentsManager;
         $commentForPost = $commentManager->getAllCommentsForPostID($id);
 
-        return $this->twig->render(self::ENVIRONNEMENT.'/partial/commentsList.html', array(
+        return $this->twig->render(self::CONTROLLER_NAME.'/partial/commentsList.html', array(
             'Comments' => $commentForPost,
         ));
     }
