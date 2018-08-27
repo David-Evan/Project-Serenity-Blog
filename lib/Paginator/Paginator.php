@@ -473,7 +473,7 @@
         if(is_string($URLPattern))
             $this->URLPattern = $URLPattern;
         else
-            throw new \Exception('URLTemplate need to be a string');
+            throw new \Exception('URLPattern need to be a string');
     }
 
 }

@@ -14,12 +14,12 @@ namespace Library\Paginator;
  */
 class PaginatorOptions{
 
-    protected $paginatorRange;
-    protected $elementsPerPage;
-    protected $currentPage;
-    protected $URLTemplate;
-    protected $URLPattern;
-    protected $enableStrictMode;
+    protected $paginatorRange = 2;
+    protected $elementsPerPage = 3;
+    protected $currentPage = 1;
+    protected $URLTemplate = '{page}';
+    protected $URLPattern = '/{page}/';
+    protected $enableStrictMode = true;
 
 
     /**
