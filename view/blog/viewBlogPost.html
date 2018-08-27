@@ -1,4 +1,6 @@
-{% extends "frontend/base.html" %}
+{% extends "blog/base.html" %}
+
+{% block main_menu %}{{ include('blog/partial/main-menu.html') }}{% endblock %}
 
 {% block title %}{{BlogPost.title}}{% endblock %}
 
@@ -38,16 +40,16 @@
           <!-- [END SECTION] - POST -->
 
           <!-- [START SECTION] - COMMENT BOX -->
-            {{ include('frontend/partial/commentBox.html') }}
+            {{ include('blog/partial/commentBox.html') }}
           <!--[END SECTION] - COMMENT BOX-->
 
           <!-- [START SECTION] - COMMENTS -->
           <div id="postCommentsWrapper" class="mc_post_comments-wrapper">
-            {{ include('frontend/partial/commentsList.html') }}
+            {{ include('blog/partial/commentsList.html') }}
           </div>
           <!-- [END SECTION] - COMMENTS-->
       </main>
 {% endblock %}
 {# You can add sidebar by uncomment this section
-{% block sidebar %}{{ include('frontend/partial/sidebar.html') }} {% endblock %}
+{% block sidebar %}{{ include('blog/partial/sidebar.html') }} {% endblock %}
 #}
