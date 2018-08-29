@@ -1,6 +1,5 @@
-    
-    
-    {% if Comments %}
+ 
+      {% if Comments %}
         {% for Comment in Comments %}
         
             <div class="mc_post_comment row">
@@ -16,11 +15,49 @@
                 <hr>
               </section>
               <footer class="mc_post_comment-footer col-sm-12 col-lg-2">
-                <button class="light-btn small-btn">Signaler</button>
+                <button class="light-btn small-btn jQuery_class-survey-btn" data-id="{{Comment.id}}">Signaler</button>
                 <hr>
               </footer>
             </div>
           
         {% endfor %}
         {% block paginator %} {{ include('layout/partial/paginator.html') }}  {% endblock %}
+
+       <!-- Success Modal Box -->
+       <div id="successSurveyCommentModal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Commentaire signalé</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <div class="mc_post_comment-sucess-icon far fa-check-circle"></div>
+                <p>Merci, ce commentaire a bien été signalé pour modération</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        
+        <!-- Fail Modal Box -->
+        <div id="failSurveyCommentModal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Une erreur est survenue</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <div class="mc_post_comment-fail-icon far fa-times-circle"></div>
+                <p>Le commentaire n'a pas été signalé</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
     {% endif %}

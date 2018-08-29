@@ -27,8 +27,18 @@ class CommentsManager extends EntityManager{
             return false;
     }
 
+    public function getAllCommentsUnderSurvey(){
+        $result = $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+                                    ' WHERE isUnderSurvey = true '.
+                                    ' ORDER BY surveyCount DESC ', \PDO::FETCH_OBJ)->fetchAll();
+
+        if(empty($result))
+            return false;
+        return $result;
+    }
+
     public function deleteCommentByID($id){
-        $sql =  ' DELETE FROM '.$this->_tableName.
+        $sql =  ' DELETE FROM '.self::TABLE_NAME.
                 ' WHERE id=:id';
 
         $query = $this->_db->prepare($sql);
@@ -58,6 +68,40 @@ class CommentsManager extends EntityManager{
                               ':content' => $comment->getContent(),
                               ':status' => $comment->getStatus(),
             ));
+
+        if($query->rowCount() > 0)
+            return true;
+        else
+            return false; 
+    }
+
+    public function surveyComment($id){
+        
+        $sql =  ' UPDATE '.self::TABLE_NAME.
+                ' SET isUnderSurvey = true,'.
+                    ' surveyCount = surveyCount + 1'.
+                ' WHERE id = :id';
+
+        $query = $this->_db->prepare($sql);
+
+        $query->execute(array(':id' => $id));
+
+        if($query->rowCount() > 0)
+            return true;
+        else
+            return false; 
+    }
+
+    public function removeSurveyOnComment($id){
+        
+        $sql =  ' UPDATE '.self::TABLE_NAME.
+                ' SET isUnderSurvey = false,'.
+                    ' surveyCount = 0'.
+                ' WHERE id = :id';
+
+        $query = $this->_db->prepare($sql);
+
+        $query->execute(array(':id' => $id));
 
         if($query->rowCount() > 0)
             return true;

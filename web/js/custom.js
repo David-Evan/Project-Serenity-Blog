@@ -47,4 +47,55 @@ $(document).ready(()=>{
         }
     });
 
+
+    /**
+     * AJAX Query to survey comment
+     */
+    $this = $( ".jQuery_class-survey-btn" ).on('click', function(){
+        if(confirm('Le commentaire sera relu par un modérateur. \nÊtes-vous sûr de vouloir signaler ce commentaire ? \n\nMerci de ne pas abuser de cette fonction')){
+            
+            $.get('./?a=surveyComment&id=' + $(this).data('id'))
+            .done(data=>{
+                if(data == 'SUCCESS')
+                    $('#successSurveyCommentModal').modal('toggle');
+                else{
+                    $('#failSurveyCommentModal').modal('toggle');
+                    return;
+                }
+            })
+            .fail(()=>{
+                $('#failSurveyCommentModal').modal('toggle');
+            })
+        }
+    })
+
+
+    
+    /**
+     * AJAX Query to delete comment
+     */
+    $this = $( ".jQuery_class-survey-btn" ).on('click', function(){
+        if(confirm('Le commentaire sera relu par un modérateur. \nÊtes-vous sûr de vouloir signaler ce commentaire ? \n\nMerci de ne pas abuser de cette fonction')){
+            
+            $.get('./?a=surveyComment&id=' + $(this).data('id'))
+            .done(data=>{
+                if(data == 'SUCCESS')
+                    $('#successSurveyCommentModal').modal('toggle');
+                else{
+                    $('#failSurveyCommentModal').modal('toggle');
+                    return;
+                }
+            })
+            .fail(()=>{
+                $('#failSurveyCommentModal').modal('toggle');
+            })
+        }
+    })
+
+    /**
+     * Confirm deleting comment
+     */
+    $(".jQuery_class-delete-comment").on("click", function(e){
+        return confirm('Êtes vous certain de vouloir supprimer ce commentaire ?');
+    });
 })

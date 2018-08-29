@@ -95,4 +95,23 @@ class BlogController extends BaseController{
             'Comments' => $commentForPost,
         ));
     }
+
+    /**
+     * Ajax GET : {id}
+     * Update a comment to underSurvey
+     */
+    public function surveyCommentAction($id){
+
+        $commentManager = new CommentsManager;
+
+        if(!is_numeric($id))
+            return self::AJAX_FAIL_RETURN;
+        
+        if($commentManager->surveyComment($id))
+            return self::AJAX_SUCCESS_RETURN;
+        else
+            return self::AJAX_FAIL_RETURN;
+    }
+
+    
 }

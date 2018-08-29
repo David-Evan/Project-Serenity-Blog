@@ -736,19 +736,38 @@ legend {
 }
 
 .controls {
+    padding: 5px;
     font-size: 1.5rem;
 }
 
-.controls.alert {
+.controls.not-ok {
     color: #d9382e;
 }
 
-.controls.alert:hover {
+.controls.not-ok:hover {
     color: #a80000;
 }
 
-.controls-row-2 {
+.controls.is-ok {
+    color: #008800;
+}
+
+.controls.is-ok:hover {
+    color: #015b01;
+}
+
+.controls-col-2 {
     min-width: 120px;
+    text-align: center;
+}
+
+.controls-col-3 {
+    min-width: 160px;
+    text-align: center;
+}
+
+.controls-col-title {
+    text-align: center;
 }
 
 .mc_admin-footer {

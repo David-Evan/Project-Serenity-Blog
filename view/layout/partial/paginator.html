@@ -8,7 +8,7 @@
             {% if Paginator.isCurrentPageFirstOne %} 
                 <a class="page-link disabled-link" tabindex="-1">
             {% else %}
-                <a class="page-link"  href="#{{Paginator.getURLForPreviousPage}}" tabindex="-1"></a>
+                <a class="page-link"  href="{{Paginator.getURLForPreviousPage}}" tabindex="-1">
             {% endif %}
                     <i class="fa fa-chevron-left"></i>
                 </a>
@@ -24,7 +24,7 @@
                     <a class="page-link" href="#">{{page}}<span class="sr-only">(current)</span></a>
                 </li>
             {% else %}
-                <li class="page-item"><a class="page-link" href="./{{Paginator.getURLForPage(page)}}">{{page}}</a></li>
+                <li class="page-item"><a class="page-link" href="{{Paginator.getURLForPage(page)}}">{{page}}</a></li>
             {% endif %}
         {% endfor %}
 
@@ -36,7 +36,7 @@
             {% if Paginator.isCurrentPageLastOne %} 
                 <a class="page-link disabled-link" tabindex="-1">
             {% else %}
-                <a class="page-link"  href="#./{{Paginator.getURLForNextPage}}" tabindex="-1">
+                <a class="page-link" href="{{Paginator.getURLForNextPage}}" tabindex="-1">
             {% endif %}
                     <i class="fa fa-chevron-right"></i>
                 </a>

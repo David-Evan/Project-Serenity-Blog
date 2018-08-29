@@ -1,9 +1,20 @@
 .controls{
+  padding: 5px;
   font-size: 1.5rem;
-  &.alert{
+
+  // Alert Button
+  &.not-ok{
     color: #d9382e;
     &:hover{
       color: #a80000;
+    }
+  }
+
+  // OK button
+  &.is-ok{
+    color: #008800;
+    &:hover{
+      color: #015b01;
     }
   }
 }

@@ -8,27 +8,30 @@
         <h2 class="mc_admin-title col-12">Commentaires à surveiller</h2>
     </header>
     <div class="mc_admin-content">
-        <table class="table table-hover">
-            <thead class="thead-light">
+        <table class="table table-striped">
+            <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Message</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" class="controls-col-title">Action</th>
                 </tr>
             </thead>
             <tbody>
+                {% for Comment in CommentsUnderSurvey %}  
                 <tr>
-                    <th scope="row">1</th>
-                    <td>David EVAN (devan.exa@gmail.com)</td>
-                    <td>Ceci est un commentaire assez long sur le contenu d'un article. Ce commentaire n'est pas très élogieux et nécessiterai d'être modéré.</td>
-                    <td class="controls-row-2">
-                        <a href="" class="alt-color" title="Voir dans le contexte"><i class="far fa-eye controls"></i></a>
-                        <a href="" title="Supprimer"><i class="fas fa-times controls alert"></i></a>
+                    <th scope="row">{{Comment.id}}</th>
+                    <td>{{Comment.authorName}} ({{Comment.authorEmail}})</td>
+                    <td>{{Comment.content}}</td>
+                    <td class="controls-col-2">
+                        <a href="?a=removeSurveyOnComment&id={{Comment.id}}" title="Appouver"><i class="fas fa-check controls is-ok"></i></a>
+                        <a href="?a=deleteComment&id={{Comment.id}}" title="Supprimer"><i class="fas fa-times controls not-ok jQuery_class-delete-comment"></i></a>
                     </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
+        {% block paginator %} {{ include('layout/partial/paginator.html') }}  {% endblock %}
     </div>
 
     <footer class="mc_admin-footer">
@@ -40,4 +43,4 @@
 
 {% endblock %}
 
-{% block sidebar %} {{ include('admin/partial/sidebar.html') }} {% endblock %}
+{#{% block sidebar %} {{ include('admin/partial/sidebar.html') }} {% endblock %}#}
