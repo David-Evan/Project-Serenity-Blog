@@ -1,0 +1,61 @@
+{% extends "admin/_base.html" %}
+
+{% block title %}Tous les billets - Administration{% endblock %}
+
+{% block content %}
+<main class="content-wrapper col-lg-10 mx-auto">
+    <header class="row justify-content">
+        <h2 class="mc_admin-title col-12">Liste des billets</h2>
+    </header>
+    <div class="mc_admin-content">
+        
+        {% if BlogPosts is not empty %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Visibilité</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Extrait</th>
+                    <th scope="col" class="controls-col-title">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for BlogPost in BlogPosts %}  
+                <tr>
+                    <th scope="row" class="text-center">
+                        {% if BlogPost.status == 'published' %}
+                            <i title="Publié" class="far fa-eye"></i>
+                        {% else %}
+                            <i title="Brouillon" class="far fa-eye-slash"></i>
+                        {% endif %}
+                    </th>
+                    <td>{{BlogPost.title}}</td>
+                    <td>{{BlogPost.content | excerpt(200) | raw }}</td>
+                    <td class="controls-col-2">
+                        <a href="?a=updateBlogPost&id={{BlogPost.id}}" class="alt-color" title="Modifier"><i class="far fa-edit table-bp-edit"></i></a>
+                        <a href="?a=deleteBlogPost&id={{BlogPost.id}}" title="Supprimer"><i class="fas fa-times controls not-ok jQuery_class-delete-blogpost"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+           
+            <div class="mc_admin-nc-on-survey">
+                <h4>Il n'y a actuellement aucun billet</h4>
+            </div>
+        {% endif %}
+        {% block paginator %} {{ include('layout/partial/paginator.html') }}  {% endblock %}
+        
+    </div>
+
+    <footer class="mc_admin-footer">
+        <a class="light-btn large-btn">Voir tous les billets</a>
+        <a class="light-btn large-btn">Ajouter un billet</a>
+        <a class="light-btn large-btn">Modérer commentaires</a>
+    </footer>
+</main>
+
+{% endblock %}
+
+{#{% block sidebar %} {{ include('admin/partial/sidebar.html') }} {% endblock %}#}

@@ -20,6 +20,20 @@ if(isset($_GET['a']))
                 echo $ctrl->removeSurveyOnCommentAction((int)$_GET['id']);
         break;
 
+        case 'deleteBlogPost':
+            
+        if(isset($_GET['id']) && is_numeric($_GET['id']))
+            echo $ctrl->deleteBlogPostAction((int)$_GET['id']);
+        break;
+
+        /********************/
+        case 'viewAllBlogPosts':
+            if(isset($_GET['p']) && is_numeric($_GET['p']))
+                echo $ctrl->viewAllBlogPostsAction((int)$_GET['p']);
+            else
+                echo $ctrl->viewAllBlogPostsAction();
+        break;
+
         /********************/
         case 'deleteComment':
             

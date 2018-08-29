@@ -98,4 +98,10 @@ $(document).ready(()=>{
     $(".jQuery_class-delete-comment").on("click", function(e){
         return confirm('Êtes vous certain de vouloir supprimer ce commentaire ?');
     });
+      /**
+     * Confirm deleting BlogPost
+     */
+    $(".jQuery_class-delete-blogpost").on("click", function(e){
+        return confirm('Êtes vous certain de vouloir supprimer ce billet ?');
+    });
 })

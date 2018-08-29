@@ -8,6 +8,8 @@
         <h2 class="mc_admin-title col-12">Commentaires à surveiller</h2>
     </header>
     <div class="mc_admin-content">
+        
+        {% if CommentsUnderSurvey is not empty %}
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -31,11 +33,18 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% else %}
+           
+            <div class="mc_admin-nc-on-survey">
+                <h4>Il n'y a actuellement aucun commentaire sous surveillance</h4>
+            </div>
+        {% endif %}
         {% block paginator %} {{ include('layout/partial/paginator.html') }}  {% endblock %}
+        
     </div>
 
     <footer class="mc_admin-footer">
-        <a class="light-btn large-btn">Voir tous les billets</a>
+        <a href="index_admin.php?a=viewAllBlogPosts" class="light-btn large-btn">Voir tous les billets</a>
         <a class="light-btn large-btn">Ajouter un billet</a>
         <a class="light-btn large-btn">Modérer commentaires</a>
     </footer>

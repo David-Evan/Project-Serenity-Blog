@@ -30,6 +30,21 @@ class AdminController extends BaseController{
         ));
     }
 
+    public function viewAllBlogPostsAction($page = 1){
+
+        $blogPostsManager = new BlogPostsManager;
+
+        $blogPosts = $blogPostsManager->getAllPosts();
+
+        $paginator = new Paginator($blogPosts, new TablePaginatorOptions($page));
+        $paginator->setURLTemplate('?a=viewAllBlogPost&p={page}');
+
+        return $this->twig->render(self::CONTROLLER_NAME.'/viewAllBlogPosts.html', array(
+            'BlogPosts' => $paginator->getElementsForCurrentPage(),
+            'Paginator' => $paginator,
+        ));
+    }
+
     /**
      * Delete comment Action
      */
@@ -58,6 +73,23 @@ class AdminController extends BaseController{
         
         if($commentManager->removeSurveyOnComment($id))
             return $this->indexAction();
+        else
+            return $this->redirect404();
+    }
+
+
+    /**
+     * Delete Blog Post
+     */
+    public function deleteBlogPostAction($id){
+        
+        $blogPostsManager = new BlogPostsManager;
+
+        if(!is_numeric($id))
+            return $this->redirect404();
+        
+        if($blogPostsManager->deletePostByID($id))
+            return $this->viewAllBlogPostsAction();
         else
             return $this->redirect404();
     }

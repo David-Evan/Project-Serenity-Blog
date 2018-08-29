@@ -477,6 +477,19 @@ legend {
     margin-top: 50px;
 }
 
+.mc_admin-nc-on-survey {
+    margin-bottom: 50px;
+}
+
+/*----------------------------*\
+    FONTAWESOME FIXING
+\*----------------------------*/
+.table-bp-edit {
+    position: relative;
+    bottom: 2px;
+    font-size: 1.3rem;
+}
+
 /*----------------------------*\
     MODULES
 \*----------------------------*/
