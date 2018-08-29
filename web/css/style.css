@@ -471,6 +471,13 @@ legend {
 }
 
 /*----------------------------*\
+    GRID : Admin
+\*----------------------------*/
+.mc_admin-content {
+    margin-top: 50px;
+}
+
+/*----------------------------*\
     MODULES
 \*----------------------------*/
 .header-title h2 {
@@ -606,6 +613,7 @@ legend {
     height: 40px;
     line-height: 36px;
     width: 200px;
+    text-align: center;
     transition: 0.4s;
     cursor: pointer;
 }
@@ -725,6 +733,26 @@ legend {
 
 .add-comment-form textarea {
     min-height: 140px;
+}
+
+.controls {
+    font-size: 1.5rem;
+}
+
+.controls.alert {
+    color: #d9382e;
+}
+
+.controls.alert:hover {
+    color: #a80000;
+}
+
+.controls-row-2 {
+    min-width: 120px;
+}
+
+.mc_admin-footer {
+    text-align: center;
 }
 
 /*----------------------------*\

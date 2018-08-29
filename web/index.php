@@ -13,37 +13,40 @@ if(empty($_GET['c']) or $_GET['c']== 'blog'){
 
     $ctrl = new BlogController();
 
-    switch($_GET['a']){
+    if(isset($_GET['a']))
+        switch($_GET['a']){
 
-        case 'viewBlogPost':
-            if(isset($_GET['id']) && is_numeric($_GET['id']))
-            {
+            case 'viewBlogPost':
+                if(isset($_GET['id']) && is_numeric($_GET['id']))
+                {
+                    if(isset($_GET['p']) && is_int($_GET['p']))
+                        echo $ctrl->viewBlogPostAction($_GET['id'], $_GET['p']);
+                    else
+                        echo $ctrl->viewBlogPostAction($_GET['id']);
+                }
+            break;
+            
+            /********************/
+            case 'publishComment':
+                if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST))
+                    echo $ctrl->publishCommentAction($_POST);
+            break;
+
+            /********************/
+            case 'getCommentsForPost':
+                if(isset($_GET['id']) && is_int($_GET['id']))
+                    echo $ctrl->getCommentsForPostAction($_GET['id']);
+            break;
+
+            /********************/
+            default: 
                 if(isset($_GET['p']) && is_int($_GET['p']))
-                    echo $ctrl->viewBlogPostAction($_GET['id'], $_GET['p']);
+                    echo $ctrl->indexAction($_GET['p']);
                 else
-                    echo $ctrl->viewBlogPostAction($_GET['id']);
-            }
-        break;
-        
-        /********************/
-        case 'publishComment':
-            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST))
-                echo $ctrl->publishCommentAction($_POST);
-        break;
-
-        /********************/
-        case 'getCommentsForPost':
-            if(isset($_GET['id']) && is_int($_GET['id']))
-                echo $ctrl->getCommentsForPostAction($_GET['id']);
-        break;
-
-        /********************/
-        default: 
-            if(isset($_GET['p']) && is_int($_GET['p']))
-                echo $ctrl->indexAction($_GET['p']);
-            else
-                echo $ctrl->indexAction();
-    }
+                    echo $ctrl->indexAction();
+        }
+    else
+        echo $ctrl->indexAction();
 }
 else{
     $ctrl = new BlogController();

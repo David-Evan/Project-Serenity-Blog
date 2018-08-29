@@ -10,15 +10,18 @@ use Controller\{AdminController};
 
 $ctrl = new AdminController();
 
-switch($_GET['a']){
-    
-    /********************/
+if(isset($_GET['a']))
+    switch($_GET['a']){
+        
+        /********************/
 
 
-    /********************/
+        /********************/
 
 
-    /********************/
-    default: 
+        /********************/
+        default: 
+            echo $ctrl->indexAction();
+        }
+else
         echo $ctrl->indexAction();
-    }

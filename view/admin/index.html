@@ -3,8 +3,39 @@
 {% block title %}Panneau d'administration{% endblock %}
 
 {% block content %}
-<main class="content-wrapper col-lg-8 mx-auto">
+<main class="content-wrapper col-lg-10 mx-auto">
+    <header class="row justify-content">
+        <h2 class="mc_admin-title col-12">Commentaires à surveiller</h2>
+    </header>
+    <div class="mc_admin-content">
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>David EVAN (devan.exa@gmail.com)</td>
+                    <td>Ceci est un commentaire assez long sur le contenu d'un article. Ce commentaire n'est pas très élogieux et nécessiterai d'être modéré.</td>
+                    <td class="controls-row-2">
+                        <a href="" class="alt-color" title="Voir dans le contexte"><i class="far fa-eye controls"></i></a>
+                        <a href="" title="Supprimer"><i class="fas fa-times controls alert"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
+    <footer class="mc_admin-footer">
+        <a class="light-btn large-btn">Voir tous les billets</a>
+        <a class="light-btn large-btn">Ajouter un billet</a>
+        <a class="light-btn large-btn">Modérer commentaires</a>
+    </footer>
 </main>
 
 {% endblock %}

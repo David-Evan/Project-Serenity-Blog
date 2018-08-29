@@ -1,0 +1,9 @@
+.controls{
+  font-size: 1.5rem;
+  &.alert{
+    color: #d9382e;
+    &:hover{
+      color: #a80000;
+    }
+  }
+}

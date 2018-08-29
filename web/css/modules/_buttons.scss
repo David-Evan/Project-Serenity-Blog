@@ -8,6 +8,9 @@
   }
 }
 
+.link-btn{
+
+}
 
 /* Discret buttons */
 .light-btn{
@@ -17,6 +20,7 @@
   height: 40px;
   line-height: 36px;
   width: 200px;
+  text-align: center;
   transition: 0.4s;
   cursor: pointer;
   &:hover{

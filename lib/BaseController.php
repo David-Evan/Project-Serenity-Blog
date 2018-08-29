@@ -1,7 +1,7 @@
 <?php
 namespace Library;
 
-class BaseController{
+abstract class BaseController{
     
     const AJAX_SUCCESS_RETURN = 'SUCCESS';
     const AJAX_FAIL_RETURN = 'FAIL';
