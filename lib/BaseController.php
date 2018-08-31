@@ -6,8 +6,8 @@ abstract class BaseController{
     const AJAX_SUCCESS_RETURN = 'SUCCESS';
     const AJAX_FAIL_RETURN = 'FAIL';
 
-    const VIEW_FOLDER = '../view/';
-    const CACHE_FOLDER = '../view/cache';
+    const VIEW_FOLDER = '../../view/';
+    const CACHE_FOLDER = '../../view/cache';
 
     protected $twig;
 

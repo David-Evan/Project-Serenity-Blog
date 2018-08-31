@@ -22,13 +22,19 @@ class AdminController extends BaseController{
 
         $commentsUnderSurvey = $commentManager->getAllCommentsUnderSurvey();
 
-        $paginator = new Paginator($commentsUnderSurvey, new TablePaginatorOptions($page));
-        $paginator->setURLTemplate('?p={page}');
+        if(!empty($commentsUnderSurvey)){
 
-        return $this->twig->render(self::CONTROLLER_NAME.'/index.html', array(
-            'CommentsUnderSurvey' => $paginator->getElementsForCurrentPage(),
-            'Paginator' => $paginator,
-        ));
+            $paginator = new Paginator($commentsUnderSurvey, new TablePaginatorOptions($page));
+            $paginator->setURLTemplate('?p={page}');
+
+
+            return $this->twig->render(self::CONTROLLER_NAME.'/index.html', array(
+                'CommentsUnderSurvey' => $paginator->getElementsForCurrentPage(),
+                'Paginator' => $paginator,
+            ));
+        }
+        else
+            return $this->twig->render(self::CONTROLLER_NAME.'/index.html');
     }
 
     /**
