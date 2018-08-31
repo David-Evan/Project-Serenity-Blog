@@ -119,11 +119,35 @@ class AdminController extends BaseController{
             return $this->viewAllBlogPostsAction();
     }
 
+    public function updateBlogPostAction(){
+        $blogPost = new BlogPost;
+
+        $blogPost->setStatus($_POST['status']);
+        $blogPost->setTitle($_POST['title']);
+        $blogPost->setContent($_POST['content']);
+        $blogPost->setId($_POST['postID']);
+
+        $blogPostsManager = new BlogPostsManager;
+
+        if($blogPostsManager->updatePost($blogPost))
+            return $this->viewAllBlogPostsAction();
+
+        else
+            return $this->redirect404();
+    }
+
     public function showCreateBlogPostFormAction(){
         return $this->twig->render(self::CONTROLLER_NAME.'/createBlogPost.html');
     }
 
-    public function showUpdateBlogPostFormAction(){
-        return $this->twig->render(self::CONTROLLER_NAME.'/createBlogPost.html');
+    public function showUpdateBlogPostFormAction($id){
+        $blogPostsManager = new BlogPostsManager;
+
+        if(empty($blogPost = $blogPostsManager->getPostByID($id)))
+            return $this->redirect404();
+
+        return $this->twig->render(self::CONTROLLER_NAME.'/updateBlogPost.html', array(
+            'BlogPost' => $blogPost,
+        ));
     }
 }

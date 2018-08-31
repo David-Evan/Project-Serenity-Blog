@@ -8,7 +8,7 @@ abstract class Entity{
      * id
      * @var int
      */
-    protected $_id;
+    protected $id;
 
 
     public function __construct(array $data = [])
@@ -41,8 +41,12 @@ abstract class Entity{
     }
 
     /** Getter / Setter **/
-    public function get_id(){
-		return $this->_id;
-	}
+    public function getId(){
+		return $this->id;
+  }
+
+    public function setId($id){
+      $this->id = (int) $id;
+    }
 
 }

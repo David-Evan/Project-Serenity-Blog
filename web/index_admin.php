@@ -20,6 +20,7 @@ if(isset($_GET['a']))
                 echo $ctrl->removeSurveyOnCommentAction((int)$_GET['id']);
         break;
 
+        /********************/
         case 'createBlogPost':
             if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST))
                 echo $ctrl->createBlogPostAction($_POST);
@@ -27,6 +28,19 @@ if(isset($_GET['a']))
                 echo $ctrl->showCreateBlogPostFormAction();
         break;
 
+        /********************/
+        case 'updateBlogPost':
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST))
+            echo $ctrl->updateBlogPostAction($_POST);
+
+        elseif(isset($_GET['id']) && is_numeric($_GET['id']))
+            echo $ctrl->showUpdateBlogPostFormAction((int) $_GET['id']);
+        
+            else
+            echo $ctrl->redirect404();
+        break;
+
+        /********************/
         case 'deleteBlogPost':
             
         if(isset($_GET['id']) && is_numeric($_GET['id']))

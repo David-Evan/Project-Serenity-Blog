@@ -65,8 +65,28 @@ class BlogPostsManager extends EntityManager{
 
     public function updatePost(BlogPost $blogPost){
 
-    }
+        if(!$blogPost->isValidEntity())
+            return false;
+            
+        $sql =  ' UPDATE '.self::TABLE_NAME.
+                ' SET title = :title ,'.
+                    ' content = :content ,'.
+                    ' status = :status'.
+                ' WHERE id = :id';
 
+        $query = $this->_db->prepare($sql);
+
+        $query->execute(array(  ':title' => $blogPost->getTitle(),
+                                ':content' => $blogPost->getContent(),
+                                ':status' => $blogPost->getStatus(),
+                                ':id' => $blogPost->getId(),
+            ));
+
+        if($query->rowCount() > 0)
+            return true;
+        else
+            return false; 
+    }
 
     public function createPost(BlogPost $blogPost){
       

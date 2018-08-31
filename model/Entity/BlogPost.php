@@ -87,7 +87,7 @@ class BlogPost extends Entity{
 
 		return true;
 
-	}
+    }
 
     /** Getter/Setter **/
     public function getAuthorName(){
