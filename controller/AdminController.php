@@ -99,9 +99,18 @@ class AdminController extends BaseController{
             return $this->redirect404();
     }
 
-    /**
-     * [POST]
-     */
+
+    public function changeBlogPostStatusAction($id){
+
+        $blogPostsManager = new BlogPostsManager;
+
+        if($blogPostsManager->changePostStatus($id));
+            return $this->viewAllBlogPostsAction();
+        
+        return $this->redirect404();
+
+    }
+
     public function createBlogPostAction($post){
         
         $sluger = new Slugify; 

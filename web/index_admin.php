@@ -55,6 +55,11 @@ if(isset($_GET['a']))
                 echo $ctrl->viewAllBlogPostsAction();
         break;
 
+        case 'changeBlogPostStatus':
+            if(isset($_GET['id']) && is_numeric($_GET['id']))
+                echo $ctrl->changeBlogPostStatusAction((int)$_GET['id']);
+        break;
+
         /********************/
         case 'deleteComment':
             

@@ -23,11 +23,13 @@
                 {% for BlogPost in BlogPosts %}  
                 <tr>
                     <th scope="row" class="text-center">
-                        {% if BlogPost.status == 'published' %}
-                            <i title="Publié" class="far fa-eye"></i>
-                        {% else %}
-                            <i title="Brouillon" class="far fa-eye-slash"></i>
-                        {% endif %}
+                        <a href="?a=changeBlogPostStatus&id={{BlogPost.id}}" class="alt-color">
+                            {% if BlogPost.status == 'published' %}
+                                <i title="Publié" class="far fa-eye"></i>
+                            {% else %}
+                                <i title="Brouillon" class="far fa-eye-slash"></i>
+                            {% endif %}
+                        </a>
                     </th>
                     <td>{{BlogPost.title}}</td>
                     <td>{{BlogPost.content | excerpt(200) | raw }}</td>

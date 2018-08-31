@@ -126,4 +126,27 @@ class BlogPostsManager extends EntityManager{
         else
             return false;
     }
+
+    public function changePostStatus($id){
+
+        if(!$blogPost = $this->getPostByID($id))
+            return false;
+            
+        $status = ($blogPost->status == BlogPost::PUBLISHED_STATUS) ? BlogPost::DRAFT_STATUS : BlogPost::PUBLISHED_STATUS;
+
+        $sql =  ' UPDATE '.self::TABLE_NAME.
+                         ' SET status = :status'.
+                         ' WHERE id = :id';
+
+        $query = $this->_db->prepare($sql);
+
+        $query->execute(array(  ':status' => $status,
+                                ':id' => $id,
+            ));
+
+        if($query->rowCount() > 0)
+            return true;
+        else
+            return false; 
+    }
 }
