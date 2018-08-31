@@ -2,7 +2,7 @@
 
 namespace Library;
 
-class Entity{
+abstract class Entity{
 
     /**
      * id
@@ -34,6 +34,10 @@ class Entity{
           $this->$method($value);
         }
       }
+    }
+
+    public function isValidEntity(){
+      return true;
     }
 
     /** Getter / Setter **/

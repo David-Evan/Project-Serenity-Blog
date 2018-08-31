@@ -1,0 +1,22 @@
+{% extends "admin/_base.html" %}
+
+{% block title %}Création d'un billet - Administration{% endblock %}
+
+{% block content %}
+<main class="content-wrapper col-lg-10 mx-auto">
+    <header class="row justify-content">
+        <h2 class="mc_admin-title col-12">Création d'un billet</h2>
+    </header>
+        <div class="mc_admin-content">
+        <form method="POST" action="?a=createBlogPost">
+            {{ include('admin/partial/form/BlogPost.html') }}
+        </form>
+    </div>
+</main>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+{% endblock %}

@@ -20,6 +20,13 @@ if(isset($_GET['a']))
                 echo $ctrl->removeSurveyOnCommentAction((int)$_GET['id']);
         break;
 
+        case 'createBlogPost':
+            if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST))
+                echo $ctrl->createBlogPostAction($_POST);
+            else
+                echo $ctrl->showCreateBlogPostFormAction();
+        break;
+
         case 'deleteBlogPost':
             
         if(isset($_GET['id']) && is_numeric($_GET['id']))

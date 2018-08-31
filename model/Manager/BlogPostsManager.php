@@ -3,7 +3,7 @@
 namespace Model\Manager;
 
 use Library\EntityManager;
-use Model\BlogPost;
+use Model\Entity\BlogPost;
 
 /**
  * BlogPostManager - 
@@ -67,6 +67,32 @@ class BlogPostsManager extends EntityManager{
 
     }
 
+
+    public function createPost(BlogPost $blogPost){
+      
+        if(!$blogPost->isValidEntity())
+            return false;
+
+        $sql =  ' INSERT INTO '.self::TABLE_NAME.
+                ' (title, authorName, content, status, slug)'.
+                ' VALUES (:title, :authorName, :content, :status, :slug)';
+
+        $query = $this->_db->prepare($sql);
+
+        $query->execute(array(  ':title' => $blogPost->getTitle(),
+                                ':authorName' => $blogPost->getAuthorName(),
+                                ':content' => $blogPost->getContent(),
+                                ':status' => $blogPost->getStatus(),
+                                ':slug' => $blogPost->getSlug(),
+            ));
+
+        if($query->rowCount() > 0)
+            return true;
+        else
+            return false; 
+    }
+
+    
     public function deletePostByID($id){
         $sql = ' DELETE FROM '.self::TABLE_NAME.
                ' WHERE id=:id';
@@ -79,9 +105,5 @@ class BlogPostsManager extends EntityManager{
             return true;
         else
             return false;
-    }
-
-    public function createPost(BlogPost $blogPost){
-        
     }
 }

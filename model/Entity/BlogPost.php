@@ -6,6 +6,17 @@ use Library\Entity;
 
 class BlogPost extends Entity{
 
+    const TITLE_MIN_SIZE = 3;
+    const TITLE_MAX_SIZE = 200;
+
+    const CONTENT_MIN_SIZE = 5;
+    const CONTENT_MAX_SIZE = 15000;
+    
+    const PUBLISHED_STATUS = 'published';
+    const DRAFT_STATUS = 'draft';
+
+    const AUTHOR_NAME = 'Jean FORTEROCHE';
+    
     /**
      * authorName
      * @var string
@@ -57,6 +68,27 @@ class BlogPost extends Entity{
     protected $pictureURL;
 
 
+    /**
+	 * Check properties before add or update
+	 */
+	public function isValidEntity(){
+
+        if(strlen($this->title) < self::TITLE_MIN_SIZE && strlen($this->title) > self::TITLE_MAX_SIZE)
+            return false;
+            
+        if(strlen($this->content) < self::CONTENT_MIN_SIZE && strlen($this->content) > self::CONTENT_MAX_SIZE)
+            return false;
+            
+        if($this->status != self::PUBLISHED_STATUS && $this->status != self::DRAFT_STATUS)
+            return false;
+            
+        if(!filter_var($this->pictureURL, FILTER_VALIDATE_URL) && !empty($this->pictureURL))
+            return false;
+
+		return true;
+
+	}
+
     /** Getter/Setter **/
     public function getAuthorName(){
         return $this->authorName;
@@ -99,7 +131,7 @@ class BlogPost extends Entity{
     }
 
     public function setStatus($status){
-        $this->status = $status;
+        $this->status = ($status == 1) ? self::PUBLISHED_STATUS : (($status == 0) ? self::DRAFT_STATUS : 'none');
     }
 
     public function getSlug(){

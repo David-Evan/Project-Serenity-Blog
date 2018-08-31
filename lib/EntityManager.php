@@ -2,7 +2,7 @@
 
 namespace Library;  
 
-class EntityManager{
+abstract class EntityManager{
 
     
     const SQL_USER = 'root';

@@ -6,6 +6,7 @@ use Library\{BaseController};
 use Library\Paginator\ {Paginator, TablePaginatorOptions};
 use Model\Manager\{BlogPostsManager, CommentsManager};
 use Model\Entity\{BlogPost, Comment};
+use Cocur\Slugify\Slugify;
 
 class AdminController extends BaseController{
 
@@ -30,6 +31,10 @@ class AdminController extends BaseController{
         ));
     }
 
+    /**
+     * GET : {?p}
+     * Show All Blog Post
+     */
     public function viewAllBlogPostsAction($page = 1){
 
         $blogPostsManager = new BlogPostsManager;
@@ -92,5 +97,33 @@ class AdminController extends BaseController{
             return $this->viewAllBlogPostsAction();
         else
             return $this->redirect404();
+    }
+
+    /**
+     * [POST]
+     */
+    public function createBlogPostAction($post){
+        
+        $sluger = new Slugify; 
+        $blogPost = new BlogPost;
+
+        $blogPost->setStatus($_POST['status']);
+        $blogPost->setTitle($_POST['title']);
+        $blogPost->setContent($_POST['content']);
+        $blogPost->setAuthorName(BlogPost::AUTHOR_NAME);
+        $blogPost->setSlug($sluger->slugify($_POST['title']));
+
+        $blogPostsManager = new BlogPostsManager;
+
+        if($blogPostsManager->createPost($blogPost))
+            return $this->viewAllBlogPostsAction();
+    }
+
+    public function showCreateBlogPostFormAction(){
+        return $this->twig->render(self::CONTROLLER_NAME.'/createBlogPost.html');
+    }
+
+    public function showUpdateBlogPostFormAction(){
+        return $this->twig->render(self::CONTROLLER_NAME.'/createBlogPost.html');
     }
 }

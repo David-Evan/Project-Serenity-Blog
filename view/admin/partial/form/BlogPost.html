@@ -1,0 +1,23 @@
+<div class="form-group row">
+    <div class="col-md-8">
+    <label for="Title">Titre</label>
+    <input type="text" class="form-control form-control-lg" value="{{BlogPost.title}}" id="Title" name="title" placeholder="Titre du billet" required minlength="3" maxlength="200">
+    </div>
+    <div class="col-md-4">
+        <label for="Status">Statut</label>
+        <select id="Status" name="status" class="form-control form-control-lg">
+            <option value="0">Brouillon</option>
+            <option value="1" {% if BlogPost.status == 'published' %} selected {% endif %}>Publié</option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label for="Content">Contenu</label>
+    <textarea class="form-control" id="Content" name="content" rows="25" placeholder="Contenu du billet" required minlength="5" maxlength="15000">
+        {{BlogPost.content}}
+    </textarea>
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-info">Sauvegarder</button>
+    <button type="reset" class="btn btn-light">Effacer</button>
+</div>
