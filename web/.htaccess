@@ -1,0 +1,70 @@
+Options +FollowSymlinks
+RewriteEngine On
+
+# ------------
+# Error Config
+# ------------
+
+
+# -------------
+# REWRITE RULES
+# -------------
+
+### Blog controller rules ###
+
+# index - ./(?:blog/)(page-{p})? = 1
+RewriteRule	^(?:blog/)?page-([0-9]+)(/)?$    frontend/index.php?&p=$1	[L]
+RewriteRule	^(?:blog(?:/)?)?$                frontend/index.php?&p=1	[L]
+
+# viewBlogPost - ./(?:blog/)billets/{id}/{slug}/(page-{p})? = 1
+RewriteRule	^(?:blog/)?billets/([0-9]+)/([a-z0-9]+(?:-[a-z0-9]+)*)/page-([0-9]+)(/)?$	frontend/index.php?a=viewBlogPost&id=$1?&slug=$2&p=$3	[NC,L]	
+RewriteRule	^(?:blog/)?billets/([0-9]+)/([a-z0-9]+(?:-[a-z0-9]+)*)(/)?$                 frontend/index.php?a=viewBlogPost&id=$1?&slug=$2&p=1 [NC,L]
+
+# publishComment - ./(?:blog/)publier-commentaire 
+RewriteRule	^(?:blog/)?publier-commentaire(/)?$	frontend/index.php?a=publishComment	[L]	
+
+# surveyComment - ./(?:blog/)surveiller-commentaire/{id}  
+RewriteRule	^(?:blog/)?surveiller-commentaire/([0-9]+)(/)?$	frontend/index.php?a=surveyComment&id=$1	[L]	
+
+# getCommentsForPost - ./(?:blog/)billets/{id}/commentaires 
+RewriteRule	^(?:blog/)?billets/([0-9]+)/commentaires(/)?$	frontend/index.php?a=getCommentForPost&id=$1	[L]	
+
+
+
+### Admin controller rules ###
+
+# index - ./admin/(page-{p})? = 1
+RewriteRule	^admin/page-([0-9]+)(/)?$	backend/index.php?&p=$1	[L]
+RewriteRule	^admin$                backend/index.php?&p=1 [L]
+
+# viewAllBlogPosts ./admin/billets/(page-{p})? = 1
+RewriteRule	^admin/billets/page-([0-9]+)(/)?$	    backend/index.php?a=viewAllBlogPosts&p=$1	[L]	
+RewriteRule	^admin/billets(/)?$                     backend/index.php?a=viewAllBlogPosts&p=1 [L]
+
+# showCreateBlogPostForm ./admin/ajouter-billet : GET 
+RewriteCond %{REQUEST_METHOD}  =GET
+RewriteRule	^admin/ajouter-billet(/)?$	backend/index.php?a=createBlogPost	[L]	
+
+# createBlogPost ./admin/ajouter-billet : POST
+RewriteCond %{REQUEST_METHOD}  =POST
+RewriteRule	^admin/ajouter-billet(/)?$	backend/index.php?a=createBlogPost	[L]	
+
+# showUpdateBlogPostForm - ./admin/modifier-billet/{id}  : GET 
+RewriteCond %{REQUEST_METHOD}  =GET
+RewriteRule	^admin/modifier-billet/([0-9]+)(/)?$	backend/index.php?a=updateBlogPost&id=$1	[L]	
+
+# updateBlogPost - ./admin/modifier-billet/{id}  : POST 
+RewriteCond %{REQUEST_METHOD}  =POST
+RewriteRule	^admin/modifier-billet/([0-9]+)(/)?$	backend/index.php?a=updateBlogPost&id=$1	[L]	
+
+# deleteBlogPost - ./admin/supprimer-billet/{id} 
+RewriteRule	^admin/supprimer-billet/([0-9]+)(/)?$	backend/index.php?a=deleteBlogPost&id=$1	[L]	
+
+# changeBlogPostStatus - ./admin/changer-status-billet/{id}
+RewriteRule	^admin/changer-status-billet/([0-9]+)(/)?$	backend/index.php?a=changeBlogPostStatus&id=$1	[L]	
+
+# deleteComment - ./admin/supprimer-commentaire/{id}  
+RewriteRule	^admin/supprimer-commentaire/([0-9]+)(/)?$	backend/index.php?a=deleteComment&id=$1	[L]	
+
+# removeSurveyOnComment - ./admin/valider-commentaire/{id} 
+RewriteRule	^admin/valider-commentaire/([0-9]+)(/)?$	backend/index.php?a=removeSurveyOnComment&id=$1	[L]	
