@@ -133,7 +133,6 @@
      * @param boolean StrictMode - If true, strict mode will be activated. See @doc to understand strict/non-strict mode
      */
     public function __construct(array $elementToPaginate, $args = null){
-
         // Set parameters. See method doc to understand.
         $this->setPaginatorParameters($args);
 

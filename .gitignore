@@ -3,3 +3,5 @@
 */images/
 vendor/
 composer.phar
+*.htaccess
+.htpasswd

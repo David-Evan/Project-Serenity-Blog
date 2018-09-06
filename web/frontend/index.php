@@ -1,13 +1,10 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 require ('../../vendor/autoload.php');
-use Controller\{
-    BlogController};
-    
-    /**
-     * $_GET['c'] = controller
-     * $_GET['a'] = action
-     * $_GET['p'] = page
-     */
+use Controller\BlogController;
+
 
 if(empty($_GET['c']) or $_GET['c']== 'blog'){
 

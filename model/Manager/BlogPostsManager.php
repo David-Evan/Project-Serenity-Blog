@@ -17,23 +17,15 @@ class BlogPostsManager extends EntityManager{
 
     public function getAllPosts($orderByPublishDate = 'DESC') {
         
-        $result = $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
-                                    ' ORDER BY publishDate '.$orderByPublishDate, \PDO::FETCH_OBJ)->fetchAll();
-
-        if(empty($result))
-            return false;
-        return $result;
+        return $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+                                 ' ORDER BY publishDate '.$orderByPublishDate, \PDO::FETCH_OBJ)->fetchAll();
     }
 
     public function getAllPublishedPosts($orderByPublishDate = 'DESC'){
 
-        $result = $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+        return $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
                                     ' WHERE status="published"'.
                                     ' ORDER BY publishDate '.$orderByPublishDate, \PDO::FETCH_OBJ)->fetchAll();
-
-        if(empty($result))
-            return false;
-        return $result;
     }
 
     public function getAllDraftPosts(){

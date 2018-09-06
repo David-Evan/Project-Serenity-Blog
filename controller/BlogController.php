@@ -20,7 +20,7 @@ class BlogController extends BaseController{
         $blogPostManager = new BlogPostsManager;
 
         $blogPosts = $blogPostManager->getAllPublishedPosts();
-
+        
         $paginator = new Paginator($blogPosts, new BlogPostsPaginatorOptions($page));
 
         return $this->twig->render(self::CONTROLLER_NAME.'/index.html', array(

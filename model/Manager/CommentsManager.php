@@ -28,13 +28,9 @@ class CommentsManager extends EntityManager{
     }
 
     public function getAllCommentsUnderSurvey(){
-        $result = $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+        return $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
                                     ' WHERE isUnderSurvey = true '.
                                     ' ORDER BY surveyCount DESC ', \PDO::FETCH_OBJ)->fetchAll();
-
-        if(empty($result))
-            return false;
-        return $result;
     }
 
     public function deleteCommentByID($id){
