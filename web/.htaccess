@@ -55,7 +55,7 @@ RewriteRule	^admin/modifier-billet/([0-9]+)(/)?$	backend/index.php?a=updateBlogP
 
 # updateBlogPost - ./admin/modifier-billet/{id}  : POST
 RewriteCond %{REQUEST_METHOD}  =POST
-RewriteRule	^admin/modifier-billet/$	backend/index.php?a=updateBlogPost	[L]
+RewriteRule	^admin/modifier-billet(/)?$	backend/index.php?a=updateBlogPost	[L]
 
 # deleteBlogPost - ./admin/supprimer-billet/{id}
 RewriteRule	^admin/supprimer-billet/([0-9]+)(/)?$	backend/index.php?a=deleteBlogPost&id=$1	[L]
