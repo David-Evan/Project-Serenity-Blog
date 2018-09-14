@@ -47,7 +47,10 @@
     
               {% for Lastpost in Sidebar.BlogPosts %}
               <section class="sb-lp_post">
-                <h4 class="sb-lp_post-title"><a href="./?a=viewBlogPost&id={{Lastpost.id}}" class="alt-color">{{Lastpost.title}}</a></h4>
+
+
+                  
+                <h4 class="sb-lp_post-title"><a href="./billets/{{Lastpost.id}}/{{Lastpost.slug}}/" class="alt-color">{{Lastpost.title}}</a></h4>
                 <p class="sb-lp_post-content">{{ Lastpost.content|excerpt(150)|raw }}</p>
               </section>
               {% endfor %}

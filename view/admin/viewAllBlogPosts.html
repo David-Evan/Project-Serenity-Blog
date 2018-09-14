@@ -23,7 +23,7 @@
                 {% for BlogPost in BlogPosts %}  
                 <tr>
                     <th scope="row" class="text-center">
-                        <a href="?a=changeBlogPostStatus&id={{BlogPost.id}}" class="alt-color">
+                        <a href="admin/changer-status-billet/{{BlogPost.id}}" class="alt-color">
                             {% if BlogPost.status == 'published' %}
                                 <i title="Publié" class="far fa-eye"></i>
                             {% else %}
@@ -34,8 +34,8 @@
                     <td>{{BlogPost.title}}</td>
                     <td>{{BlogPost.content | excerpt(200) | raw }}</td>
                     <td class="controls-col-2">
-                        <a href="?a=updateBlogPost&id={{BlogPost.id}}" class="alt-color" title="Modifier"><i class="far fa-edit table-bp-edit"></i></a>
-                        <a href="?a=deleteBlogPost&id={{BlogPost.id}}" title="Supprimer"><i class="fas fa-times controls not-ok jQuery_class-delete-blogpost"></i></a>
+                        <a href="admin/modifier-billet/{{BlogPost.id}}" class="alt-color" title="Modifier"><i class="far fa-edit table-bp-edit"></i></a>
+                        <a href="admin/supprimer-billet/{{BlogPost.id}}" title="Supprimer"><i class="fas fa-times controls not-ok jQuery_class-delete-blogpost"></i></a>
                     </td>
                 </tr>
                 {% endfor %}

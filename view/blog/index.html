@@ -14,7 +14,7 @@
         <div class="mc_post-date date col-12">
           {{BlogPost.publishDate|date('d/m/Y')}} 
         </div>
-        <h2 class="mc_post-title col-12"><a href="./?a=viewBlogPost&id={{BlogPost.id}}" class="alt-color">{{BlogPost.title}}</a></h2>
+        <h2 class="mc_post-title col-12"><a href="./billets/{{BlogPost.id}}/{{BlogPost.slug}}/" class="alt-color">{{BlogPost.title}}</a></h2>
       </header>
 
       <!-- Post preview - Content -->
@@ -30,7 +30,7 @@
         </div>
       <!-- Post preview - Footer -->
         <footer class="mc_post-footer">
-          <a href="./?a=viewBlogPost&id={{BlogPost.id}}" class="mc_post-readmore light-btn alt-color">Afficher la suite</a>
+          <a href="./billets/{{BlogPost.id}}/{{BlogPost.slug}}/" class="mc_post-readmore light-btn alt-color">Afficher la suite</a>
         </footer>
       </div>
         <hr>

@@ -9,9 +9,12 @@ use Controller\BlogController;
 if(empty($_GET['c']) or $_GET['c']== 'blog'){
 
     $ctrl = new BlogController();
-
     if(isset($_GET['a']))
         switch($_GET['a']){
+
+            case 'author':
+                echo $ctrl->authorAction();
+            break;
 
             case 'viewBlogPost':
                 if(isset($_GET['id']) && is_numeric($_GET['id']))

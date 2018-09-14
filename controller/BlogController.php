@@ -9,7 +9,7 @@ use Model\Entity\{BlogPost, Comment};
 
 class BlogController extends BaseController{
 
-    const CONTROLLER_NAME = 'Blog';
+    const CONTROLLER_NAME = 'blog';
 
     /**
      * {blog?} {page?}
@@ -31,6 +31,14 @@ class BlogController extends BaseController{
     }
 
     /**
+     * {blog?}/auteur
+     * @return string - author view
+     */
+    public function authorAction(){
+        return $this->twig->render(self::CONTROLLER_NAME.'/author.html');
+    }
+
+    /**
      * {blog?} + {id}
      * @return string - Single Post view
      */
@@ -48,8 +56,11 @@ class BlogController extends BaseController{
         $commentManager = new CommentsManager;
         $commentForPost = $commentManager->getAllCommentsForPostID($id);
 
+        if(!$commentForPost)
+            $commentForPost = array();
+
         $paginator = new Paginator($commentForPost, new CommentsPaginatorOptions($commentsPage));
-        if(!$paginator->currentPageExist())
+        if(!$paginator->isCurrentPageFirstOne() && !$paginator->currentPageExist())
             return $this->redirect404();
 
         // Render view
