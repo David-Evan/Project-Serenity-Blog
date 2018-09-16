@@ -35,7 +35,15 @@ class BlogController extends BaseController{
      * @return string - author view
      */
     public function authorAction(){
-        return $this->twig->render(self::CONTROLLER_NAME.'/author.html');
+        $blogPostManager = new BlogPostsManager;
+
+        $blogPosts = $blogPostManager->getAllPublishedPosts();
+        
+        $paginator = new Paginator($blogPosts, new BlogPostsPaginatorOptions());
+
+        return $this->twig->render(self::CONTROLLER_NAME.'/author.html', array(
+            'Sidebar' => array('BlogPosts' => $paginator->getElementsForPage(1))
+        ));
     }
 
     /**
