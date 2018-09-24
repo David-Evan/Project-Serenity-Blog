@@ -29,8 +29,15 @@ class CommentsManager extends EntityManager{
 
     public function getAllCommentsUnderSurvey(){
         return $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
-                                    ' WHERE isUnderSurvey = true '.
-                                    ' ORDER BY surveyCount DESC ', \PDO::FETCH_OBJ)->fetchAll();
+                                 ' WHERE isUnderSurvey = true '.
+                                 ' ORDER BY surveyCount DESC ', \PDO::FETCH_OBJ)->fetchAll();
+    }
+
+    public function getAllCommentsInLastWeek(){
+        return $this->_db->query(' SELECT * FROM '.self::TABLE_NAME.
+                                 ' WHERE publishDate BETWEEN date_sub(now(),INTERVAL 1 WEEK) and now() '.
+                                 ' ORDER BY publishDate DESC '.
+                                 ' LIMIT 30 ', \PDO::FETCH_OBJ)->fetchAll();
     }
 
     public function deleteCommentByID($id){

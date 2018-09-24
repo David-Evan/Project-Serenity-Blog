@@ -26,8 +26,8 @@
                     <td>{{Comment.authorName}} ({{Comment.authorEmail}})</td>
                     <td>{{Comment.content}}</td>
                     <td class="controls-col-2">
-                        <a href=".admin/valider-commentaire/{{Comment.id}}" title="Appouver"><i class="fas fa-check controls is-ok"></i></a>
-                        <a href=".admin/supprimer-commentaire/{{Comment.id}}" title="Supprimer"><i class="fas fa-times controls not-ok jQuery_class-delete-comment"></i></a>
+                        <a href="admin/valider-commentaire/{{Comment.id}}" title="Appouver"><i class="fas fa-check controls is-ok"></i></a>
+                        <a href="admin/supprimer-commentaire/{{Comment.id}}" title="Supprimer"><i class="fas fa-times controls not-ok jQuery_class-delete-comment"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -40,7 +40,38 @@
             </div>
         {% endif %}
         {% block paginator %} {{ include('layout/partial/paginator.html') }}  {% endblock %}
-        
+    </div>
+
+    <div class="mc_admin-content">
+        <h2 class="mc_admin-title col-12">Commentaires publié la semaine dernière</h2>
+        {% if CommentsInLastWeeks is not empty %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Message</th>
+                    <th scope="col" class="controls-col-title">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Comment in CommentsInLastWeeks %}  
+                <tr>
+                    <th scope="row">{{Comment.id}}</th>
+                    <td>{{Comment.authorName}} ({{Comment.authorEmail}})</td>
+                    <td>{{Comment.content}}</td>
+                    <td class="controls-col-2">
+                        <a href=".admin/supprimer-commentaire/{{Comment.id}}" title="Supprimer"><i class="fas fa-times controls not-ok jQuery_class-delete-comment"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <div class="mc_admin-nc-on-survey">
+                <h4>Il n'y a actuellement aucun commentaire publié durant les 7 derniers jours</h4>
+            </div>
+        {% endif %}
     </div>
 
     <footer class="mc_admin-footer">

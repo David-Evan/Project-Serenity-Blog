@@ -20,6 +20,8 @@ class AdminController extends BaseController{
 
         $commentManager = new CommentsManager;
 
+        $commentsInLastWeek = $commentManager->getAllCommentsInLastWeek();
+
         $commentsUnderSurvey = $commentManager->getAllCommentsUnderSurvey();
 
         if(!empty($commentsUnderSurvey)){
@@ -31,10 +33,13 @@ class AdminController extends BaseController{
             return $this->twig->render(self::CONTROLLER_NAME.'/index.html', array(
                 'CommentsUnderSurvey' => $paginator->getElementsForCurrentPage(),
                 'Paginator' => $paginator,
+                'CommentsInLastWeeks' => $commentsInLastWeek,
             ));
         }
         else
-            return $this->twig->render(self::CONTROLLER_NAME.'/index.html');
+            return $this->twig->render(self::CONTROLLER_NAME.'/index.html', array(
+                'CommentsInLastWeeks' => $commentsInLastWeek
+            ));
     }
 
     /**
