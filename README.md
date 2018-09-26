@@ -40,5 +40,3 @@ Voici leurs descriptions :
 - **controllers/** : Contient les controllers de l'application
 - **web/** : Dossier accessible au public contenant le point d'entrée de l'application
 - **vendors/** : Contient les bibliothèques PHP externes dont nous pourrions avoir besoin
-
-## A venir ...
